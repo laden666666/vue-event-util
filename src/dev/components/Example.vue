@@ -1,5 +1,6 @@
 <template>
     <div class="test">
+        <button @click="$eventUtil.fun(test)()">btn</button>
     </div>
 </template>
 
@@ -10,6 +11,13 @@ export default {
         }
     },
     methods: {
+        test(){
+            console.log(1)
+
+            return function(){
+                console.log(2)
+            }
+        }
     }
 }
 </script>
