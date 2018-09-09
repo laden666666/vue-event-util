@@ -1,27 +1,92 @@
-let uid = 1
+import debounce from 'lodash.debounce'
+import throttle from 'lodash.throttle'
+import before from 'lodash.before'
+import after from 'lodash.after'
+import delay from 'lodash.delay'
+var hash = require('object-hash')
+
+window.throttle = throttle
 
 function install(Vue, options) {
-    Vue.prototype.$throttle = {
-        fun(fn){
-            fn.$eventUtilID = uid++
-            if(this._eventUtilData){
-                if(!this._eventUtilData[fn.$eventUtilID + '|' + this._uid]){
-                    this._eventUtilData[fn.$eventUtilID + '|' + this._uid] = fn
-                }
-                return fn
-            } else {
-                throw new Error('')
+    Vue.mixin({
+        beforeCreate: function (o) {
+            //保存注册事件的创建的函数
+            this._eventUtilData = {}
+        },
+        beforeDestroy(){
+            this._eventUtilData = null
+        },
+    })
+
+    Vue.prototype.$$eventBind = function(name, eventKey, fn){
+        var map
+        if(this._eventUtilData[name]){
+            map = this._eventUtilData[name]
+        } else {
+            this._eventUtilData[name] = map = {}
+        }
+
+        if(map[eventKey]){
+            return map[eventKey]
+        } else {
+            var that = this
+            return map[eventKey] = function(...arg){
+                fn.call(that, ...arg)
             }
         }
     }
 
-    Vue.mixin({
-        beforeCreate: function () {
-            this._eventUtilData = {}
+    Vue.prototype.$defer = function(eventKey, fn, wait = 0){
+        if(typeof eventKey === 'function'){
+            wait = fn || 0
+            fn = eventKey
+        }
 
-            console.log(this)
-        },
-    })
+        return (...arg)=>delay(fn, wait, ...arg)
+    }
+
+    Vue.prototype.$throttle = function(eventKey, fn, wait=0, options={}){
+        if(typeof eventKey === 'function'){
+            options = wait || {}
+            wait = fn || 0
+            fn = eventKey
+            eventKey = ''
+        }
+        options = {trailing: false, ...options}
+        eventKey = hash([eventKey, fn.toString(), wait, options])
+        return this.$$eventBind('throttle', eventKey, throttle(fn, wait, options))
+    }
+
+    Vue.prototype.$debounce = function(eventKey, fn, wait=0, options={}){
+        if(typeof eventKey === 'function'){
+            options = wait || {}
+            wait = fn || 0
+            fn = eventKey
+            eventKey = ''
+        }
+        eventKey = hash([eventKey, fn.toString(), wait, options])
+        return this.$$eventBind('debounce', eventKey, debounce(fn, wait, options))
+    }
+
+    Vue.prototype.$after = function(eventKey, fn, time=0){
+        if(typeof eventKey === 'function'){
+            time = fn || 0
+            fn = eventKey
+            eventKey = ''
+        }
+        eventKey = hash([eventKey, fn.toString(), time])
+        return this.$$eventBind('after', eventKey, after(time, fn))
+    }
+
+    Vue.prototype.$before = function(eventKey, fn, time=0){
+        if(typeof eventKey === 'function'){
+            time = fn || 0
+            fn = eventKey
+            eventKey = ''
+        }
+        eventKey = hash([eventKey, fn.toString(), time])
+        return this.$$eventBind('before', eventKey, before(time, fn))
+    }
 }
 
 export default {

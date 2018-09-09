@@ -1,6 +1,12 @@
 <template>
     <div class="test">
-        <button @click="$eventUtil.fun(test)()">btn</button>
+        <button @click="$defer(counting, 1000)(count)" >defer</button>
+        <button @click="defer(count)" >defer</button>
+        <button @click="$throttle(counting, 1000)(count)" >throttle</button>
+        <button @click="throttle(count)" >throttle</button>
+        <button @click="$debounce(counting, 1000)(count)" >debounce</button>
+        <button @click="$after(counting, 5)(count)" >after</button>
+        <button @click="$before(counting, 5)(count)" >before</button>
     </div>
 </template>
 
@@ -8,16 +14,38 @@
 export default {
     data () {
         return {
+            count: 0
         }
     },
     methods: {
-        test(){
-            console.log(1)
-
-            return function(){
-                console.log(2)
-            }
-        }
+        counting(a){
+            console.log(a)
+            this.count++
+        },
+        defer(a){
+            this.$defer((a)=>{
+                this.counting(a)
+            })(a)
+        },
+        throttle(a){
+            this.$throttle((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        debounce(a){
+            console.log(a)
+            this.count++
+        },
+        after(a){
+            console.log(a)
+            this.count++
+        },
+        before(a){
+            console.log(a)
+            this.count++
+        },
+    },
+    components:{
     }
 }
 </script>
