@@ -13,6 +13,18 @@ function install(Vue, options) {
             //保存注册事件的创建的函数
             this._eventUtilData = {}
         },
+        created: function (o) {
+            if(this.$options.methods){
+                Object.keys(this.$options.methods).forEach(methodName=>{
+                    if(this.$options.methods[methodName].eventUtilData){
+                        let method = this.$options.methods[methodName]
+                        var eventUtilData = method.eventUtilData
+                        var key = Object.keys(eventUtilData)[0]
+                        this[methodName] = this['$' + key](method.bind(this), ...eventUtilData[key])
+                    }
+                })
+            }
+        },
         beforeDestroy(){
             this._eventUtilData = null
         },

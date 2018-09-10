@@ -1,16 +1,21 @@
 <template>
     <div class="test">
         <button @click="$defer(counting, 1000)(count)" >defer</button>
-        <button @click="defer(count)" >defer</button>
+        <button @click="defer(count)" >defer2</button>
+        <button @click="defer2(count)" >defer3</button>
         <button @click="$throttle(counting, 1000)(count)" >throttle</button>
-        <button @click="throttle(count)" >throttle</button>
+        <button @click="throttle(count)" >throttle2</button>
         <button @click="$debounce(counting, 1000)(count)" >debounce</button>
+        <button @click="debounce(count)" >debounce2</button>
         <button @click="$after(counting, 5)(count)" >after</button>
+        <button @click="after(count)" >after</button>
         <button @click="$before(counting, 5)(count)" >before</button>
+        <button @click="before(count)" >before</button>
     </div>
 </template>
 
 <script>
+import {defer} from '../../core/decorator'
 export default {
     data () {
         return {
@@ -25,24 +30,30 @@ export default {
         defer(a){
             this.$defer((a)=>{
                 this.counting(a)
-            })(a)
+            }, 1000)(a)
         },
+        defer2: defer(function (a) {
+            this.counting(a)
+        }, 1000),
         throttle(a){
             this.$throttle((a)=>{
                 this.counting(a)
             }, 1000)(a)
         },
         debounce(a){
-            console.log(a)
-            this.count++
+            this.$debounce((a)=>{
+                this.counting(a)
+            }, 1000)(a)
         },
         after(a){
-            console.log(a)
-            this.count++
+            this.$after((a)=>{
+                this.counting(a)
+            }, 5)(a)
         },
         before(a){
-            console.log(a)
-            this.count++
+            this.$before((a)=>{
+                this.counting(a)
+            }, 5)(a)
         },
     },
     components:{
