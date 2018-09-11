@@ -10,7 +10,7 @@ function resolve (dir) {
 module.exports = {
     context: path.resolve(__dirname, '../'),
     resolve: {
-        extensions: ['.js', '.vue', '.json'],
+        extensions: ['.js', '.ts', '.vue', '.json'],
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
         }

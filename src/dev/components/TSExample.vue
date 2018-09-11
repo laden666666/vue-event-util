@@ -1,18 +1,20 @@
 <template>
-    <div class="test">
-        <button @click="$defer(counting, 1000)(count)" >defer</button>
-        <button @click="defer(count)" >defer2</button>
-        <button @click="defer2(count)" >defer3</button>
-        <button @click="$throttle(counting, 1000)(count)" >throttle</button>
-        <button @click="throttle(count)" >throttle2</button>
-        <button @click="$debounce(counting, 1000)(count)" >debounce</button>
-        <button @click="debounce(count)" >debounce2</button>
-        <button @click="$after(counting, 5)(count)" >after</button>
-        <button @click="after(count)" >after</button>
-        <button @click="$before(counting, 5)(count)" >before</button>
-        <button @click="before(count)" >before</button>
-    </div>
+    <button @click="onClick">Click!</button>
 </template>
+<script lang="ts">
+import Vue from 'vue'
+import {defer} from '../../core/decorator'
+export default class MyComponent extends Vue {
+    // 初始数据可以直接声明为实例的属性
+    message: string = 'Hello!'
+
+    // 组件方法也可以直接声明为实例的方法
+    @defer(1000)
+    onClick (): void {
+        console.log(this.message)
+    }
+}
+</script>
 
 <script>
 import {defer} from '../../core/decorator'

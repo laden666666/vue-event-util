@@ -26,6 +26,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: [
             {
+                test: /\.ts(x?)$/,
+                include: path.join(__dirname, '../src'),
+                use: [{
+                    loader: 'ts-loader',
+                }]
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
