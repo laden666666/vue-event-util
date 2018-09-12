@@ -19,8 +19,16 @@ function install(Vue, options) {
                     if(this.$options.methods[methodName].eventUtilData){
                         let method = this.$options.methods[methodName]
                         var eventUtilData = method.eventUtilData
-                        var key = Object.keys(eventUtilData)[0]
-                        this[methodName] = this['$' + key](method.bind(this), ...eventUtilData[key])
+                        if(eventUtilData.isKeyMethod){
+                            let fn = this[methodName]
+                            var key = Object.keys(eventUtilData)[0]
+                            this[methodName] = (eventKey)=>{
+                                return this['$' + key](eventKey, fn(eventKey), ...eventUtilData[key])
+                            }
+                        } else {
+                            var key = Object.keys(eventUtilData)[0]
+                            this[methodName] = this['$' + key](method.bind(this), ...eventUtilData[key])
+                        }
                     }
                 })
             }
