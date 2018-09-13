@@ -2,33 +2,19 @@ import Vue from 'vue'
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $defer(eventKey: string, fn: Function, wait?: number): any;
-        $defer(fn: Function, wait?: number): any;
+        $defer(callbackID: string, callback: Function, wait?: number): any;
+        $defer(callback: Function, wait?: number): any;
 
-        $throttle(eventKey: string, fn: Function, wait?: number, options?: {
-            leading: boolean,
-            trailing: boolean,
-        }): any;
-        $throttle(fn: Function, wait?: number, options?: {
-            leading: boolean,
-            trailing: boolean,
-        }): any;
+        $throttle(callbackID: string, callback: Function, wait?: number): any;
+        $throttle(callback: Function, wait?: number): any;
 
-        $debounce(eventKey: string, fn: Function, wait?: number, options?: {
-            leading: boolean,
-            maxWait: number
-            trailing: boolean,
-        }): any;
-        $debounce(fn: Function, wait?: number, options?: {
-            leading: boolean,
-            maxWait: number
-            trailing: boolean,
-        }): any;
+        $debounce(callbackID: string, callback: Function, wait?: number): any;
+        $debounce(callback: Function, wait?: number): any;
 
-        $after(eventKey: string, fn: Function, time?: number): any;
-        $after(fn: Function, time?: number): any;
+        $after(callbackID: string, callback: Function, time?: number): any;
+        $after(callback: Function, time?: number): any;
 
-        $before(eventKey: string, fn: Function, time?: number): any;
-        $before(fn: Function, time?: number): any;
+        $before(callbackID: string, callback: Function, time?: number): any;
+        $before(callback: Function, time?: number): any;
     }
 }
