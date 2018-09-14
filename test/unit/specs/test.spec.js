@@ -4,45 +4,34 @@ import * as eventUtil from '../../../dist/vue-event-util'
 Vue.use(eventUtil)
 
 describe('vue-event-util', () => {
-    it('de', async () => {
-        const Constructor = Vue.extend({
-            data: function(){
-                return {
-                    width: '200',
-                    height: '200',
-                    resizeCount: 0
-                }
-            },
-            methods: {
-                resize(){
-                }
-            },
-            template:
-                `<div class="box" :style="{width: width + 'px', height: height + 'px'}" v-elresize @elresize="resize">
-                    resize count : <span id="resizeCount">{{resizeCount}}</span>
-                </div>`
-        })
-        const vm = new Constructor().$mount()
+    it('defer测试', async () => {
+    })
+    it('defer测试，表达式方式', async () => {
+    })
+    it('throttle测试', async () => {
+    })
+    it('throttle测试，表达式方式', async () => {
+    })
+    it('throttle测试，增加callbackKey', async () => {
+    })
+    it('debounce测试', async () => {
+    })
+    it('debounce测试，表达式方式', async () => {
+    })
+    it('debounce测试，增加callbackKey', async () => {
+    })
+    it('after测试', async () => {
+    })
+    it('after测试，表达式方式', async () => {
+    })
+    it('after测试，增加callbackKey', async () => {
     })
 
-    it('Elresize component test', async () => {
-        const Constructor = Vue.extend({
-            data: function(){
-                return {
-                    width: '200',
-                    height: '200',
-                    resizeCount: 0
-                }
-            },
-            methods: {
-                resize(){
-                }
-            },
-            template:
-                `<Elresize class="box" :style="{width: width + 'px', height: height + 'px'}" @elresize="resize">
-                    resize count : <span id="resizeCount2">{{resizeCount}}</span>
-                </Elresize>`
-        })
-        const vm = new Constructor().$mount()
+    it('before测试', async () => {
     })
+    it('before测试，表达式方式', async () => {
+    })
+    it('before测试，增加callbackKey', async () => {
+    })
+
 })
