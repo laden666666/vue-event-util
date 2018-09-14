@@ -3,8 +3,9 @@ import './type';
 
 function definedDecorator(methodName: string, isKeyMethod: boolean, ...arg: any[]){
     return function (target: Vue, method: string, descriptor: any) {
-        (target as any)[method].eventUtilData = {
-            [methodName]: arg,
+        (target as any)[method].veuData = {
+            arg,
+            methodName,
             isKeyMethod
         }
         return descriptor
@@ -17,33 +18,18 @@ export function defer(wait: number) {
 export function deferKey(wait: number) {
     return definedDecorator('defer', true, wait)
 }
-export function throttle(wait?: number, options?: {
-    leading: boolean,
-    trailing: boolean,
-}) {
-    return definedDecorator('throttle', false, wait, options)
+export function throttle(wait?: number) {
+    return definedDecorator('throttle', false, wait)
 }
-export function throttleKey(wait?: number, options?: {
-    leading: boolean,
-    trailing: boolean,
-}) {
-    return definedDecorator('throttle', true, wait, options)
+export function throttleKey(wait?: number) {
+    return definedDecorator('throttle', true, wait)
 }
-export function debounce(wait?: number, options?: {
-    leading: boolean,
-    trailing: boolean,
-    maxWait: number
-}) {
-    return definedDecorator('debounce', false, wait, options)
+export function debounce(wait?: number) {
+    return definedDecorator('debounce', false, wait)
 }
-export function debounceKey(wait?: number, options?: {
-    leading: boolean,
-    trailing: boolean,
-    maxWait: number
-}) {
-    return definedDecorator('debounce', true, wait, options)
+export function debounceKey(wait?: number) {
+    return definedDecorator('debounce', true, wait)
 }
-
 export function after(time: number) {
     return definedDecorator('after', false, time)
 }

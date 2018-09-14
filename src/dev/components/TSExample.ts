@@ -6,10 +6,10 @@ import {throttle, throttleKey} from '../../core/decorator'
 @Component({
     // 所有的组件选项都可以放在这里
     template: `<div>
-    <button @click="onClick(0)">Click1</button>
-    <button @click="onClickKey(1)(1)">Click2</button>
-    <button @click="onClickKey(2)(2)">Click3</button>
-    <button @click="onClick(3)">Click4</button>
+        <button @click="onClick(0)">Click1</button>
+        <button @click="onClickKey(1)(1)">Click2</button>
+        <button @click="onClickKey(2)(2)">Click3</button>
+        <button @click="onClick(3)">Click4</button>
     </div>`
 })
 export default class MyComponent extends Vue {

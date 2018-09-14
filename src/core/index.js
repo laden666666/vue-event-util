@@ -1,9 +1,21 @@
-import debounce from 'lodash.debounce'
-import throttle from 'lodash.throttle'
-import before from 'lodash.before'
-import after from 'lodash.after'
-import delay from 'lodash.delay'
-import hash from 'object-hash'
+import _debounce from 'lodash.debounce'
+import _throttle from 'lodash.throttle'
+import _before from 'lodash.before'
+import _after from 'lodash.after'
+import _delay from 'lodash.delay'
+import hash from 'hash-sum'
+import {
+    debounce,
+    debounceKey,
+    defer,
+    deferKey,
+    throttle,
+    throttleKey,
+    after,
+    afterKey,
+    before,
+    beforeKey
+} from './decorator'
 
 // 通过webpack的
 const version = PLUGIN_VERSION
@@ -12,31 +24,34 @@ function install(Vue, options) {
     Vue.mixin({
         beforeCreate: function (o) {
             //保存注册事件的创建的函数
-            this._eventUtilData = {}
+            this._VEUData = {}
         },
         created: function (o) {
+            // 检索每一个函数，通过查看veuData
+            var methods = this.$options.methods
+            if(methods){
+                for(let methodName in methods){
+                    let method = methods[methodName]
+                    let veuData = method.veuData
 
-            if(this.$options.methods){
-                Object.keys(this.$options.methods).forEach(methodName=>{
-                    if(this.$options.methods[methodName].eventUtilData){
-                        let method = this.$options.methods[methodName]
-                        var eventUtilData = method.eventUtilData
-                        if(eventUtilData.isKeyMethod){
+                    if(veuData){
+                        let {arg, isKeyMethod} = veuData
+                        let utilMethodName = veuData.methodName
+
+                        if(isKeyMethod){
                             let fn = this[methodName]
-                            var key = Object.keys(eventUtilData)[0]
                             this[methodName] = (eventKey)=>{
-                                return this['$' + key](eventKey, fn(eventKey), ...eventUtilData[key])
+                                return this['$' + utilMethodName](eventKey, fn(eventKey), arg[0], arg[1])
                             }
                         } else {
-                            var key = Object.keys(eventUtilData)[0]
-                            this[methodName] = this['$' + key](method.bind(this), ...eventUtilData[key])
+                            this[methodName] = this['$' + utilMethodName](method.bind(this), arg[0], arg[1])
                         }
                     }
-                })
+                }
             }
         },
         beforeDestroy(){
-            this._eventUtilData = null
+            this._VEUData = null
         },
     })
 
@@ -46,20 +61,20 @@ function install(Vue, options) {
      * @param {*} eventKey          函数绑定到事件的key，用于区分不同事件对应的缓存，相当于fn的id
      * @param {*} fn                事件的callback。该函数会缓存起来，要求相同fn使用相同的eventKey，以免重复缓存
      */
-    Vue.prototype.$$eventBind = function(methodName, eventKey, fn){
+    Vue.prototype.$$VEUBind = function(methodName, eventKey, fn){
         // 获取对应methodName的map，用于缓存callback
-        var map
-        if(this._eventUtilData[methodName]){
-            map = this._eventUtilData[methodName]
+        var map, veuData = this._VEUData
+        if(veuData[methodName]){
+            map = veuData[methodName]
         } else {
-            this._eventUtilData[methodName] = map = {}
+            veuData[methodName] = map = {}
         }
 
         // 如果已经缓存了fn，则不再缓存新fn。
         if(map[eventKey]){
             return map[eventKey]
         } else {
-            var that = this
+            let that = this
             return map[eventKey] = function(...arg){
                 fn.call(that, ...arg)
             }
@@ -78,53 +93,69 @@ function install(Vue, options) {
             fn = eventKey
         }
 
-        return (...arg)=>delay(fn, wait, ...arg)
+        return (...arg)=>_delay(fn, wait, ...arg)
     }
 
-    Vue.prototype.$throttle = function(eventKey, fn, wait=0, options={}){
-        if(typeof eventKey === 'function'){
-            options = wait || {}
-            wait = fn || 0
-            fn = eventKey
-            eventKey = ''
-        }
-        options = {trailing: false, ...options}
-        eventKey = hash([eventKey, fn.toString(), wait, options])
-        return this.$$eventBind('throttle', eventKey, throttle(fn, wait, options))
-    }
+    var utilMethodArr = [
+        [
+            'throttle',
+            (fn, wait=0)=>_throttle(fn, wait, {trailing: false})
+        ], [
+            'debounce',
+            _debounce
+        ], [
+            'after',
+            (fn, time=0)=>_after(time, fn)
+        ], [
+            'before',
+            (fn, time=0)=>_before(time, fn)
+        ]
+    ];
 
-    Vue.prototype.$debounce = function(eventKey, fn, wait=0, options={}){
-        if(typeof eventKey === 'function'){
-            options = wait || {}
-            wait = fn || 0
-            fn = eventKey
-            eventKey = ''
-        }
-        eventKey = hash([eventKey, fn.toString(), wait, options])
-        return this.$$eventBind('debounce', eventKey, debounce(fn, wait, options))
-    }
+    // 将
+    for(let i = 0; i < utilMethodArr.length; i++){
+        let utilMethodName = utilMethodArr[i][0],
+        utilMethod = utilMethodArr[i][1]
 
-    Vue.prototype.$after = function(eventKey, fn, time=0){
-        if(typeof eventKey === 'function'){
-            time = fn || 0
-            fn = eventKey
-            eventKey = ''
-        }
-        eventKey = hash([eventKey, fn.toString(), time])
-        return this.$$eventBind('after', eventKey, after(time, fn))
-    }
+        Vue.prototype['$' + utilMethodName] = function(eventKey, fn, time=0){
+            if(typeof eventKey === 'function'){
+                time = fn || 0
+                fn = eventKey
+                eventKey = ''
+            }
 
-    Vue.prototype.$before = function(eventKey, fn, time=0){
-        if(typeof eventKey === 'function'){
-            time = fn || 0
-            fn = eventKey
-            eventKey = ''
+            eventKey = hash([eventKey, fn.toString(), time])
+            return this.$$VEUBind(utilMethodName, eventKey, utilMethod(fn, time))
         }
-        eventKey = hash([eventKey, fn.toString(), time])
-        return this.$$eventBind('before', eventKey, before(time, fn))
     }
 }
 
+export {
+    install,
+    hash,
+    debounce,
+    debounceKey,
+    defer,
+    deferKey,
+    throttle,
+    throttleKey,
+    after,
+    afterKey,
+    before,
+    beforeKey
+}
+
 export default {
-    install
+    install,
+    hash,
+    debounce,
+    debounceKey,
+    defer,
+    deferKey,
+    throttle,
+    throttleKey,
+    after,
+    afterKey,
+    before,
+    beforeKey
 }
