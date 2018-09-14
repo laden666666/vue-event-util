@@ -142,7 +142,8 @@ export {
     after,
     afterKey,
     before,
-    beforeKey
+    beforeKey,
+    version
 }
 
 export default {
@@ -157,5 +158,6 @@ export default {
     after,
     afterKey,
     before,
-    beforeKey
+    beforeKey,
+    version
 }
