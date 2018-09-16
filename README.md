@@ -15,6 +15,7 @@
         </tr>
     </table>
 </center>
+
 **vue-event-util**，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流**、**函数防抖**、**函数延时**等功能。**vue-event-util**针对于这一情况，将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用**vue-event-util**提供的便携方法将其应用到Vue的事件中。
 
 ## 源码
