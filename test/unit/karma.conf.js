@@ -14,9 +14,9 @@ module.exports = function karmaConfig (config) {
         browsers: ['Chrome'],
         frameworks: ['mocha', 'chai'],
         reporters: ['spec', 'coverage'],
-        files: ['./specs/*.spec.js'],
+        files: ['./index.js'],
         preprocessors: {
-            './specs/*.spec.js': ['webpack', 'sourcemap']
+            './index.js': ['webpack', 'sourcemap']
         },
         webpack: webpackConfig,
         webpackMiddleware: {

@@ -2,7 +2,6 @@ import Vue from 'vue'
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $defer(callbackID: string, callback: Function, wait?: number): any;
         $defer(callback: Function, wait?: number): any;
 
         $throttle(callbackID: string, callback: Function, wait?: number): any;
