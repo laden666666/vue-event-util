@@ -1,17 +1,25 @@
-<!doctype html><head><meta charset="utf-8"></head><style>.mydoc_h1{
-    margin: 0 0 1em;
+<!doctype html><head><meta charset="utf-8"></head><style>.mydoc_api_title{
+    margin: 35px 0 0.8em;
 }
-.mydoc_h1_a{
-    color: #2c3e50;
+.mydoc_api_title_a{
+    font-size: 1.5em;
     text-decoration: none;
-    font-size: 2em;
+    color: #2c3e50;
+    text-align: center;
 }
-.mydoc_h1_h1{
-    margin: 45px 0 8px;
-    padding-bottom: 7px;
-    font-size: 28px;
+.mydoc_api_title_a::before{
+    content: '';
+    display: block;
+    margin-top: -40px;
+    height: 40px;
+    visibility: hidden;
 }
-.mydoc_h1_content{
+.mydoc_api_title_h2{
+    margin: 5px 0 8px;
+    font-size: 22px;
+    padding-bottom: 1em;
+}
+.mydoc_api_title_content{
 
 }.mydoc_api_npm-info{
     line-height: 1.6em;
@@ -226,14 +234,14 @@ pre[class*="language-"] {
     overflow: hidden;
 }</style>
 <article class='mydoc'>
-    <div class="mydoc_h1">
-                <a class="mydoc_h1_a">
-                    <h1 class="mydoc_h1_h1">vue-event-util</h1>
-                </a>
-                <div class="mydoc_h1_content">
-                    
-                </div>
-            </div><p class="mydoc_api_npm-info" align="center">
+    <div class="mydoc_api_title">
+                    <a class="mydoc_api_title_a">
+                        <h2 class="mydoc_api_title_h2">vue-event-util</h2>
+                    </a>
+                    <div class="mydoc_api_title_content">
+                        
+                    </div>
+                </div><p class="mydoc_api_npm-info" align="center">
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/v/vue-event-util.svg" alt="Version"></a>
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/dm/vue-event-util.svg" alt="Downloads"></a>
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
@@ -275,7 +283,7 @@ pre[class*="language-"] {
                     <div class="mydoc_h2_content">
                         <p class="mydoc_p"> 当我们对函数进行<strong class="mydoc_strong">柯里化</strong>、<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>处理的时候，往往需要使用到高级函数语法，将原有函数传入通过以入参传入，并以返回值的形式返回的处理后的函数。如lodash库对函数防抖的实现：</p><figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse">fn <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span></pre>
-                </figure><p class="mydoc_p"> 但是这个处理对于Vue的template语法中的事件响应函数来说，实现起来却很麻烦，我们以做<strong class="mydoc_strong">函数防抖</strong>为例，看看我们以往在Vue中是如何实现上述操作的。Vue的事件绑定有两种方法：<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">方法名绑定</a>和<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E5%86%85%E8%81%94%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">内联处理器</a>。<strong class="mydoc_strong">内联处理器</strong>允许我们提供一个表达式处理事件，因为Vue会生成一个匿名函数去执行绑定的表达式，每一次事件处理时候都会执行一次这个匿名函数，因此无法实现如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>这样的功能。</p><figure class='mydoc_code'>
+                </figure><p class="mydoc_p"> 但是这个处理对于Vue的template语法中的事件响应函数来说，实现起来很麻烦，我们以做<strong class="mydoc_strong">函数防抖</strong>为例，看看我们以往在Vue中是如何实现上述操作的。Vue的事件绑定有两种方法：<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">方法名绑定</a>和<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E5%86%85%E8%81%94%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">内联处理器</a>。<strong class="mydoc_strong">内联处理器</strong>允许我们提供一个表达式处理事件，因为Vue会生成一个匿名函数去执行绑定的表达式，每一次事件处理时候都会执行一次这个匿名函数，因此无法实现如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>这样的功能。</p><figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_.throttle(fn, 1000)()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre>
