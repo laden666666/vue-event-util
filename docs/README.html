@@ -1,0 +1,319 @@
+<!doctype html><head><meta charset="utf-8"></head><style>.mydoc_h1{
+    margin: 0 0 1em;
+}
+.mydoc_h1_a{
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 2em;
+}
+.mydoc_h1_h1{
+    margin: 45px 0 8px;
+    padding-bottom: 7px;
+    font-size: 28px;
+}
+.mydoc_h1_content{
+
+}.mydoc_api_npm-info{
+    line-height: 1.6em;
+    margin: 1.2em 0 -1.2em;
+    padding-bottom: 1.2em;
+    position: relative;
+    z-index: 1;
+}.mydoc_p{
+    line-height: 1.6em;
+    margin: 1.2em 0 -1.2em;
+    padding-bottom: 1.2em;
+    position: relative;
+    z-index: 1;
+    color: #333;
+}.mydoc_strong{
+    font-weight: 600;
+    color: #2c3e50;
+}.mydoc_a{
+    color: #42b983;
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+}.mydoc_h2{
+    margin: 35px 0 0.8em;
+}
+.mydoc_h2_a{
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #2c3e50;
+}
+.mydoc_h2_a::before{
+    content: '';
+    display: block;
+    margin-top: -40px;
+    height: 40px;
+    visibility: hidden;
+}
+.mydoc_h2_h2{
+    margin: 5px 0 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 22px;
+    padding-bottom: 1em;
+}
+.mydoc_h2_content{
+
+}:not(.mydoc_li) + .mydoc_li, .mydoc_li:first-child{
+    margin-top: 10px;
+}
+.mydoc_li + .mydoc_li{
+    margin-top: -10px;
+}
+
+.mydoc_li{
+    margin: 0;
+    color: #34495e;
+    margin-bottom: 10px;
+    position: relative;
+}/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #9a6e3a;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function,
+.token.class-name {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+.mydoc_code{
+    overflow-x: auto;
+    position: relative;
+    background-color: #f8f8f8;
+    padding: 0;
+    line-height: 1.1em;
+    border-radius: 2px;
+    margin: 1.2em 0;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8AgMAAABHkjHhAAAACVBMVEWAgIBaWlo+Pj7rTFvWAAAAA3RSTlMHCAw+VhR4AAAA+klEQVQoz4WSMW7EQAhFPxKWNh2FCx+HkaZI6RRb5DYbyVfIJXLKDCFoMbaTKSw/8ZnPAPjaH2xgZcUNUDADD7D9LtDBCLZ45fbkvo/30K8yeI64pPwl6znd/3n/Oe93P3ho9qeh72btTFzqkz0rsJle8Zr81OLEwZ1dv/713uWqvu2pl+k0fy7MWtj9r/tN5q/02z89qa/L4Dc2LvM93kezPfXlME/O86EbY/V9GB9ePX8G1/6W+/9h1dq/HGfTfzT3j/xNo7522Bfnqe5jO/fvhVthlfk434v3iO9zG/UOphyPeinPl1J8Gtaa7xPTa/Dk+RIs4deMvwGvcGsmsCvJ0AAAAABJRU5ErkJggg==');
+}
+.mydoc_code_pre{
+    padding: 1.2em 1.4em;
+    line-height: 1.5em;
+    margin: 0;
+}.mydoc{
+    font-size: 14px;
+    overflow: hidden;
+}</style>
+<article class='mydoc'>
+    <div class="mydoc_h1">
+                <a class="mydoc_h1_a">
+                    <h1 class="mydoc_h1_h1">vue-event-util</h1>
+                </a>
+                <div class="mydoc_h1_content">
+                    
+                </div>
+            </div><p class="mydoc_api_npm-info" align="center">
+                <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/v/vue-event-util.svg" alt="Version"></a>
+                <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/dm/vue-event-util.svg" alt="Downloads"></a>
+                <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
+            </p><table cellspacing="1" style="margin: 0 auto;font-size: 14px;background-color: #f9f9f9;color: #036;padding: 3px;border-radius: 4px;border: 1px solid rgba(220, 220, 220, .5);">
+    <colgroup width="100" span="7" align="center"></colgroup>
+    <tr style="height: 30px;">
+        <th align="center">Android</td><th align="center">Firefox</td><th align="center">Chrome</td><th align="center">IE</td><th align="center">iPhone</td><th align="center">Edge</td><th align="center">Safari</td>
+    </tr>
+    <tr style="color: #000;line-height: 28px;font-weight: bold;">
+        <td align="center" style="background-color: #60d848">>=4.4</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">>=9</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td>
+    </tr>
+</table><p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>、<strong class="mydoc_strong">函数延时</strong>等功能。<strong class="mydoc_strong">vue-event-util</strong>针对于这一情况，将<a class="mydoc_a" href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<strong class="mydoc_strong">vue-event-util</strong>提供的便携方法将其应用到Vue的事件中。</p><div class="mydoc_h2">
+                    <a class="mydoc_h2_a">
+                        <h2 class="mydoc_h2_h2">源码</h2>
+                    </a>
+                    <div class="mydoc_h2_content">
+                        <p class="mydoc_p"> <a class="mydoc_a" href="https://github.com/laden666666/vue-event-util">github</a>，<a class="mydoc_a" href="https://gitee.com/laden666666/vue-event-util">码云</a></p>
+                    </div>
+                </div><div class="mydoc_h2">
+                    <a class="mydoc_h2_a">
+                        <h2 class="mydoc_h2_h2">功能</h2>
+                    </a>
+                    <div class="mydoc_h2_content">
+                        <ul class="mydoc_li"><li> 控件所有实例共享的函数防抖、函数节流、延时执行等功能</li></ul><ul class="mydoc_li"><li> 控件实例独享的函数防抖、函数节流、延时执行等功能</li></ul><ul class="mydoc_li"><li> 列表渲染的控件独享的函数防抖、函数节流、延时执行等功能</li></ul><ul class="mydoc_li"><li> 实现防止按钮连击</li></ul><ul class="mydoc_li"><li> 实现降低事件响应频率</li></ul><ul class="mydoc_li"><li> 对typescript的支持</li></ul>
+                    </div>
+                </div><div class="mydoc_h2">
+                    <a class="mydoc_h2_a">
+                        <h2 class="mydoc_h2_h2">安装</h2>
+                    </a>
+                    <div class="mydoc_h2_content">
+                        <figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse">npm install vue<span class="token operator">-</span>event<span class="token operator">-</span>util</pre>
+                </figure>
+                    </div>
+                </div><div class="mydoc_h2">
+                    <a class="mydoc_h2_a">
+                        <h2 class="mydoc_h2_h2">插件解决的问题</h2>
+                    </a>
+                    <div class="mydoc_h2_content">
+                        <p class="mydoc_p"> 当我们对函数进行<strong class="mydoc_strong">柯里化</strong>、<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>处理的时候，往往需要使用到高级函数语法，将原有函数传入通过以入参传入，并以返回值的形式返回的处理后的函数。如lodash库对函数防抖的实现：</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse">fn <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span></pre>
+                </figure><p class="mydoc_p"> 但是这个处理对于Vue的template语法中的事件响应函数来说，实现起来却很麻烦，我们以做<strong class="mydoc_strong">函数防抖</strong>为例，看看我们以往在Vue中是如何实现上述操作的。Vue的事件绑定有两种方法：<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">方法名绑定</a>和<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E5%86%85%E8%81%94%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">内联处理器</a>。<strong class="mydoc_strong">内联处理器</strong>允许我们提供一个表达式处理事件，因为Vue会生成一个匿名函数去执行绑定的表达式，每一次事件处理时候都会执行一次这个匿名函数，因此无法实现如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>这样的功能。</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_.throttle(fn, 1000)()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre>
+                </figure><p class="mydoc_p"> 因为每一次点击都会执行一次_.throttle方法，所以上述代码是无法实现对事件的函数防抖处理的。</p><p class="mydoc_p"> 另一种方法是先将函数进行处理，再通过方法名绑定或者内联处理器的方式绑定到Vue上面。</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    <span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            fn<span class="token punctuation">:</span> _<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token operator">...</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
+                </figure><p class="mydoc_p"> 这样写也存在一个问题，就是所有控件公用一个防抖函数，当多个控件需要单独做函数防抖的话就没有办法了。而且在列表渲染，如果列表的每一个控件都要单独做函数防抖处理，这样就更麻烦了。</p><p class="mydoc_p"> 有时候我们甚至会借助watch来实现函数防抖的功能。如：</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    <span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
+        <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$watch</span><span class="token punctuation">(</span><span class="token string">'clickTime'</span><span class="token punctuation">,</span> _<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+                <span class="token operator">...</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            clickTime<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+        methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            fn<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">this</span><span class="token punctuation">.</span>clickTime<span class="token operator">++</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
+                </figure><p class="mydoc_p"> 方法是死的人是活的，我们肯定能找到更优雅的方式来做函数防抖或者其他类似的事情。<strong class="mydoc_strong">vue-event-util</strong>就是为了解决这个事情而生的。</p>
+                    </div>
+                </div>
+</article>

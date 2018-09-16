@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import evu, {debounce} from '../../../src/core'
+import evu, {debounce, debounceKey} from '../../../src/core'
 
 // @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
@@ -20,7 +20,7 @@ export class TestDebounce extends Vue {
         this.clickCount++
     }
 
-    @evu.debounceKey(100)
+    @debounceKey(100)
     clickKey(key: string) {
         return (id: any)=>{
             this.clickCount++

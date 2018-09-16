@@ -152,7 +152,7 @@ describe('vue-event-util', () => {
 
         await defer1.promise
     })
-    it('throttle测试，增加callbackKey', async () => {
+    it('throttle测试，带callbackID', async () => {
         var defer1 = new Defer
         const Constructor = Vue.extend({
             data: function(){
@@ -306,7 +306,7 @@ describe('vue-event-util', () => {
 
         await defer1.promise
     })
-    it('debounce测试，增加callbackKey', async () => {
+    it('debounce测试，带callbackID', async () => {
         var defer1 = new Defer
         const Constructor = Vue.extend({
             data: function(){
@@ -459,7 +459,7 @@ describe('vue-event-util', () => {
 
         await defer1.promise
     })
-    it('after测试，增加callbackKey', async () => {
+    it('after测试，带callbackID', async () => {
         var defer1 = new Defer
         const Constructor = Vue.extend({
             data: function(){
@@ -623,7 +623,7 @@ describe('vue-event-util', () => {
 
         await defer1.promise
     })
-    it('before测试，增加callbackKey', async () => {
+    it('before测试，带callbackID', async () => {
         var defer1 = new Defer
         const Constructor = Vue.extend({
             data: function(){

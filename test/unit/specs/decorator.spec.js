@@ -113,6 +113,8 @@ describe('vue-event-util', () => {
             //虽然点击4次，但是仅两次生效
             if(vm.$refs.test.clickCount == 2){
                 defer1.resolve()
+            } else {
+                defer1.reject()
             }
         }, 100)
 

@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
-    "doc": "docjsx c html ./doc-jsx/README.jsx ./docs && docjsx c md ./doc-jsx/README.jsx ./",
+    "doc": "docjsx c html -p api ./doc-jsx/README.jsx ./docs && docjsx c md -p api ./doc-jsx/README.jsx ./",
     "test": "npm run unit",
     "build": "webpack --progress --config build/webpack.prod.conf.js"
   },
@@ -56,6 +56,7 @@
     "karma-webpack": "^2.0.2",
     "mocha": "^3.2.0",
     "my-doc-jsx": "^0.1.2",
+    "my-doc-jsx-plugin-api": "^0.1.1",
     "node-notifier": "^5.1.2",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",

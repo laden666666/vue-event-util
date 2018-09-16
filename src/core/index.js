@@ -1,8 +1,13 @@
 import _debounce from 'lodash.debounce'
-import _throttle from 'lodash.throttle'
-import _before from 'lodash.before'
-import _after from 'lodash.after'
+import __throttle from 'lodash.throttle'
+import __before from 'lodash.before'
+import __after from 'lodash.after'
 import _delay from 'lodash.delay'
+
+const _throttle = (fn, wait=0)=>__throttle(fn, wait, {trailing: false})
+const _after = (fn, time=0)=>__after(time, fn)
+const _before = (fn, time=0)=>__before(time, fn)
+
 import hash from 'hash-sum'
 import {
     debounce,
@@ -28,11 +33,13 @@ function install(Vue, options) {
         created: function (o) {
             // 检索每一个函数，通过查看veuData
             var methods = this.$options.methods
-            if(methods){
+            // 如果该对象使用了veu注解，则对齐方法初始化，这样不使用该注解的方法无需循环，增加效率
+            if(methods && this.$$isVEU){
                 for(let methodName in methods){
                     let method = methods[methodName]
                     let veuData = method.veuData
 
+                    //根据方法是否配置了veuData，进行veu初始化
                     if(veuData){
                         let {arg, isKeyMethod} = veuData
                         let utilMethodName = veuData.methodName
@@ -98,16 +105,16 @@ function install(Vue, options) {
     var utilMethodArr = [
         [
             'throttle',
-            (fn, wait=0)=>_throttle(fn, wait, {trailing: false})
+            _throttle
         ], [
             'debounce',
             _debounce
         ], [
             'after',
-            (fn, time=0)=>_after(time, fn)
+            _after
         ], [
             'before',
-            (fn, time=0)=>_before(time, fn)
+            _before
         ]
     ];
 
@@ -130,8 +137,6 @@ function install(Vue, options) {
 }
 
 export {
-    install,
-    hash,
     debounce,
     debounceKey,
     defer,
@@ -141,20 +146,13 @@ export {
     afterKey,
     before,
     beforeKey,
-    version
 }
 
 export default {
     install,
-    hash,
-    debounce,
-    debounceKey,
-    defer,
-    throttle,
-    throttleKey,
-    after,
-    afterKey,
-    before,
-    beforeKey,
-    version
+    version,
+    debounc: _debounce,
+    throttle: _throttle,
+    after: _after,
+    delay: _delay,
 }

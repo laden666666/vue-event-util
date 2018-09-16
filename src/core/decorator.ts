@@ -7,7 +7,9 @@ function definedDecorator(methodName: string, isKeyMethod: boolean, ...arg: any[
             arg,
             methodName,
             isKeyMethod
-        }
+        };
+        //标记一下该对象是一个使用了veu注解的对象
+        (target as any).constructor.prototype['$$isVEU'] = ()=>{}
         return descriptor
     }
 }

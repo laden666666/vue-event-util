@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import evu, {throttle} from '../../../src/core'
+import evu, {throttle, throttleKey} from '../../../src/core'
 
 // @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
@@ -20,7 +20,7 @@ export class TestThrottle extends Vue {
         this.clickCount++
     }
 
-    @evu.throttleKey(1000)
+    @throttleKey(1000)
     clickKey(key: string) {
         return (id: any)=>{
             this.clickCount++

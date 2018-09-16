@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Component from 'vue-class-component'
-import evu, {after} from '../../../src/core'
+import {after, afterKey} from '../../../src/core'
 
 // @Component 修饰符注明了此类为一个 Vue 组件
 @Component({
@@ -20,7 +20,7 @@ export class TestAfter extends Vue {
         this.clickCount++
     }
 
-    @evu.afterKey(3)
+    @afterKey(3)
     clickKey(key: string) {
         return (id: any)=>{
             this.clickCount++

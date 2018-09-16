@@ -10,15 +10,10 @@ type DecoratorFunction = {
 type VEU = {
     install(vue: Vue, options: any): any,
     version: string,
-    debounce: DecoratorFunction,
-    debounceKey: DecoratorFunction,
-    throttle: DecoratorFunction,
-    throttleKey: DecoratorFunction,
-    after: DecoratorFunction,
-    afterKey: DecoratorFunction,
-    before: DecoratorFunction,
-    beforeKey: DecoratorFunction,
-    defer: DecoratorFunction,
+    throttle: DecoratorFunction
+    after: DecoratorFunction
+    before: DecoratorFunction
+    defer: DecoratorFunction
 }
 
 declare const veu: VEU
@@ -37,15 +32,13 @@ declare const defer: DecoratorFunction
 
 export default veu
 export {
-    install,
-    version,
     debounce,
-    debounceKey,
     throttle,
-    throttleKey,
     after,
-    afterKey,
     before,
+    debounceKey,
+    throttleKey,
+    afterKey,
     beforeKey,
     defer,
 }
