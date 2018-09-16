@@ -1,16 +1,20 @@
-<h2 align="center">vue-event-util</h2><p class="mydoc_api_npm-info" align="center">
+<h2 align="center">vue-event-util</h2>
+<p class="mydoc_api_npm-info" align="center">
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/v/vue-event-util.svg" alt="Version"></a>
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/dm/vue-event-util.svg" alt="Downloads"></a>
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
-        </p><table cellspacing="1" style="margin: 0 auto;font-size: 14px;background-color: #f9f9f9;color: #036;padding: 3px;border-radius: 4px;border: 1px solid rgba(220, 220, 220, .5);">
-    <colgroup width="100" span="7" align="center"></colgroup>
-    <tr style="height: 30px;">
-        <th align="center">Android</td><th align="center">Firefox</td><th align="center">Chrome</td><th align="center">IE</td><th align="center">iPhone</td><th align="center">Edge</td><th align="center">Safari</td>
-    </tr>
-    <tr style="color: #000;line-height: 28px;font-weight: bold;">
-        <td align="center" style="background-color: #60d848">>=4.4</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">>=9</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td>
-    </tr>
-</table>**vue-event-util**，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流**、**函数防抖**、**函数延时**等功能。**vue-event-util**针对于这一情况，将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用**vue-event-util**提供的便携方法将其应用到Vue的事件中。
+        </p>
+<center>
+    <table cellspacing="1" style="margin: 0 auto;font-size: 14px;background-color: #f9f9f9;color: #036;padding: 3px;border-radius: 4px;border: 1px solid rgba(220, 220, 220, .5);">
+        <colgroup width="100" span="7" align="center"></colgroup>
+        <tr style="height: 30px;">
+            <th align="center">Android</td><th align="center">Firefox</td><th align="center">Chrome</td><th align="center">IE</td><th align="center">iPhone</td><th align="center">Edge</td><th align="center">Safari</td>
+        </tr>
+        <tr style="color: #000;line-height: 28px;font-weight: bold;">
+            <td align="center" style="background-color: #60d848">>=4.4</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">>=9</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td>
+        </tr>
+    </table>
+</center>**vue-event-util**，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流**、**函数防抖**、**函数延时**等功能。**vue-event-util**针对于这一情况，将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用**vue-event-util**提供的便携方法将其应用到Vue的事件中。
 
 ## 源码
 [github](https://github.com/laden666666/vue-event-util "") ，[码云](https://gitee.com/laden666666/vue-event-util "") 
