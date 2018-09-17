@@ -126,35 +126,35 @@ export deflaut {
     * 延迟 wait 毫秒后调用 callback
     * @param {Function} callback    延迟执行的函数
     * @param {number} wait       延迟的时间，单位毫秒
-    * @returns {Function}           处理后的函数
+    * @return {Function}           处理后的函数
     `}</api>
     <h4>eventUtil.debounce</h4>
     <api>{`
     * 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 callback 方法。
     * @param {Function} callback    需要做防抖函数
     * @param {number} wait        延迟的时间，单位毫秒
-    * @returns {Function}           处理后的函数
+    * @return {Function}           处理后的函数
     `}</api>
     <h4>eventUtil.throttle</h4>
     <api>{`
     * 创建一个节流函数，在 wait 秒内最多执行 callback 一次的函数
     * @param {Function} callback    需要做节流函数
     * @param {number} wait       节流时间，单位毫秒
-    * @returns {Function}           处理后的函数
+    * @return {Function}           处理后的函数
     `}</api>
     <h4>eventUtil.after</h4>
     <api>{`
     * 此方法创建一个函数，当他被调用n或更多次之后将马上触发callback
     * @param {Function} callback    用来限定的函数
     * @param {number} n           方法应该在调用多少次后才执行
-    * @returns {Function}           处理后的函数
+    * @return {Function}           处理后的函数
     `}</api>
     <h4>eventUtil.before</h4>
     <api>{`
     * 创建一个调用func的函数，通过this绑定和创建函数的参数调用callback，调用次数不超过 n 次
     * @param {Function} callback    用来限定的函数
     * @param {number} n           超过多少次不再调用callback
-    * @returns {Function}           处理后的函数
+    * @return {Function}           处理后的函数
     `}</api>
 
 </doc>

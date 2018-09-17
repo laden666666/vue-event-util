@@ -166,6 +166,11 @@ export deflaut {
 
 
 
+##### 返回值
+|参数类型|参数说明|
+|-|-|-|
+|Function|处理后的函数|
+
 
 #### eventUtil.debounce
 
@@ -180,6 +185,11 @@ export deflaut {
 |wait|number|延迟的时间，单位毫秒|
 
 
+
+##### 返回值
+|参数类型|参数说明|
+|-|-|-|
+|Function|处理后的函数|
 
 
 #### eventUtil.throttle
@@ -196,6 +206,11 @@ export deflaut {
 
 
 
+##### 返回值
+|参数类型|参数说明|
+|-|-|-|
+|Function|处理后的函数|
+
 
 #### eventUtil.after
 
@@ -211,6 +226,11 @@ export deflaut {
 
 
 
+##### 返回值
+|参数类型|参数说明|
+|-|-|-|
+|Function|处理后的函数|
+
 
 #### eventUtil.before
 
@@ -225,6 +245,11 @@ export deflaut {
 |n|number|超过多少次不再调用callback|
 
 
+
+##### 返回值
+|参数类型|参数说明|
+|-|-|-|
+|Function|处理后的函数|
 
 
 
