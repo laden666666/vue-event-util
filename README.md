@@ -1,4 +1,4 @@
-<h2 align="center">vue-event-util</h2>
+<h1 align="center">vue-event-util</h1>
 <p class="mydoc_api_npm-info" align="center">
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/v/vue-event-util.svg" alt="Version"></a>
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/dm/vue-event-util.svg" alt="Downloads"></a>
