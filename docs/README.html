@@ -479,16 +479,16 @@ pre[class*="language-"] {
         delay<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token operator">...</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        throttle<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        throttle<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token operator">...</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        debounce<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        debounce<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token operator">...</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        after<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        after<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token operator">...</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        before<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        before<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
             <span class="token operator">...</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
@@ -512,7 +512,7 @@ pre[class*="language-"] {
                         <tr>
                             <td>callback</td><td>Function</td><td>延迟执行的函数</td>
                         </tr><tr>
-                            <td>[wait]</td><td>number</td><td>延迟的时间，单位毫秒</td>
+                            <td>wait</td><td>number</td><td>延迟的时间，单位毫秒</td>
                         </tr>
                     </table>
                     
@@ -540,7 +540,7 @@ pre[class*="language-"] {
                         <tr>
                             <td>callback</td><td>Function</td><td>需要做防抖函数</td>
                         </tr><tr>
-                            <td>[wait]</td><td>number</td><td>延迟的时间，单位毫秒</td>
+                            <td>wait</td><td>number</td><td>延迟的时间，单位毫秒</td>
                         </tr>
                     </table>
                     
@@ -568,7 +568,7 @@ pre[class*="language-"] {
                         <tr>
                             <td>callback</td><td>Function</td><td>需要做节流函数</td>
                         </tr><tr>
-                            <td>[wait]</td><td>number</td><td>节流时间，单位毫秒</td>
+                            <td>wait</td><td>number</td><td>节流时间，单位毫秒</td>
                         </tr>
                     </table>
                     
@@ -596,7 +596,7 @@ pre[class*="language-"] {
                         <tr>
                             <td>callback</td><td>Function</td><td>用来限定的函数</td>
                         </tr><tr>
-                            <td>[n]</td><td>number</td><td>方法应该在调用多少次后才执行</td>
+                            <td>n</td><td>number</td><td>方法应该在调用多少次后才执行</td>
                         </tr>
                     </table>
                     
@@ -624,7 +624,7 @@ pre[class*="language-"] {
                         <tr>
                             <td>callback</td><td>Function</td><td>用来限定的函数</td>
                         </tr><tr>
-                            <td>[n]</td><td>number</td><td>超过多少次不再调用callback</td>
+                            <td>n</td><td>number</td><td>超过多少次不再调用callback</td>
                         </tr>
                     </table>
                     

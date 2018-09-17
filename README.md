@@ -136,16 +136,16 @@ export deflaut {
         delay: eventUtil.delay(function(argument){
             ...
         }, 100),
-        throttle: eventUtil., 100(function(argument){
+        throttle: eventUtil.throttle(function(argument){
             ...
         }, 100),
-        debounce: eventUtil., 100(function(argument){
+        debounce: eventUtil.debounce(function(argument){
             ...
         }, 100),
-        after: eventUtil., 100(function(argument){
+        after: eventUtil.after(function(argument){
             ...
         }, 3),
-        before: eventUtil., 100(function(argument){
+        before: eventUtil.before(function(argument){
             ...
         }, 3),
     }
@@ -161,7 +161,7 @@ export deflaut {
 ##### 参数
 |参数名|参数类型|参数说明|
 |-|-|-|
-|callback|Function|延迟执行的函数||[wait]|number|延迟的时间，单位毫秒|
+|callback|Function|延迟执行的函数||wait|number|延迟的时间，单位毫秒|
 
 
 
@@ -175,7 +175,7 @@ export deflaut {
 ##### 参数
 |参数名|参数类型|参数说明|
 |-|-|-|
-|callback|Function|需要做防抖函数||[wait]|number|延迟的时间，单位毫秒|
+|callback|Function|需要做防抖函数||wait|number|延迟的时间，单位毫秒|
 
 
 
@@ -189,7 +189,7 @@ export deflaut {
 ##### 参数
 |参数名|参数类型|参数说明|
 |-|-|-|
-|callback|Function|需要做节流函数||[wait]|number|节流时间，单位毫秒|
+|callback|Function|需要做节流函数||wait|number|节流时间，单位毫秒|
 
 
 
@@ -203,7 +203,7 @@ export deflaut {
 ##### 参数
 |参数名|参数类型|参数说明|
 |-|-|-|
-|callback|Function|用来限定的函数||[n]|number|方法应该在调用多少次后才执行|
+|callback|Function|用来限定的函数||n|number|方法应该在调用多少次后才执行|
 
 
 
@@ -217,7 +217,7 @@ export deflaut {
 ##### 参数
 |参数名|参数类型|参数说明|
 |-|-|-|
-|callback|Function|用来限定的函数||[n]|number|超过多少次不再调用callback|
+|callback|Function|用来限定的函数||n|number|超过多少次不再调用callback|
 
 
 
