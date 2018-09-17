@@ -5,7 +5,7 @@ import eventUtil from '../../../src/core'
 Vue.use(eventUtil)
 
 describe('vue-event-util', () => {
-    it('defer测试', async () => {
+    it('delay测试', async () => {
         var defer1 = new Defer
         var defer2 = new Defer
 
@@ -17,7 +17,7 @@ describe('vue-event-util', () => {
         const Constructor = Vue.extend({
             methods: {
                 click(){
-                    this.$defer(()=>{
+                    this.$delay(()=>{
                         defer1.resolve()
                         clearTimeout(clearID)
                     }, 100)()
@@ -36,7 +36,7 @@ describe('vue-event-util', () => {
         })
         await Promise.all([defer1.promise, defer2.promise])
     })
-    it('defer测试，表达式方式', async () => {
+    it('delay测试，表达式方式', async () => {
         var defer1 = new Defer
         var defer2 = new Defer
 
@@ -53,7 +53,7 @@ describe('vue-event-util', () => {
             },
             template:
                 `<div>
-                    <button id="btn" @click="$defer(click, 100)()"></button>
+                    <button id="btn" @click="$delay(click, 100)()"></button>
                 </div>`
         })
         var div = document.createElement('div')
@@ -195,6 +195,62 @@ describe('vue-event-util', () => {
             //虽然点击4次，但是仅两次生效
             if(vm.clickCount == 2){
                 defer1.resolve()
+            }
+        }, 100)
+
+        await defer1.promise
+    })
+    it('throttle全局共享测试', async () => {
+        var defer1 = new Defer
+        const Constructor = {
+            data: function(){
+                return {
+                    clickCount: 0
+                }
+            },
+            methods: {
+                click: eventUtil.throttle(function(){
+                    this.clickCount++
+                }, 1000)
+            },
+            template:
+                `<div>
+                    <button class="btn" @click="click"></button>
+                </div>`
+        }
+        var div = document.createElement('div')
+        const vm = new Vue({
+            el: div,
+            components:{
+                Constructor
+            },
+            template: `<div><Constructor ref="c1"/><Constructor ref="c2"/></div>`
+        })
+        setTimeout(()=>{
+            let buttons = vm.$el.querySelectorAll('button')
+            let button1 = buttons[0]
+            let button2 = buttons[0]
+            //各点击两次
+            setTimeout(()=>{
+                button1.click()
+            }, 0)
+            setTimeout(()=>{
+                button1.click()
+            }, 0)
+            setTimeout(()=>{
+                button2.click()
+            }, 0)
+            setTimeout(()=>{
+                button2.click()
+            }, 0)
+        })
+
+        setTimeout(()=>{
+            //虽然个点击2次，但是仅一次生效
+            if(vm.$refs.c1.clickCount == 1 && vm.$refs.c2.clickCount == 0){
+                defer1.resolve()
+            } else {
+                defer1.reject()
             }
         }, 100)
 
@@ -363,6 +419,68 @@ describe('vue-event-util', () => {
 
         await defer1.promise
     })
+    it('debounce全局共享测试', async () => {
+        var defer1 = new Defer
+        const Constructor = {
+            data: function(){
+                return {
+                    clickCount: 0
+                }
+            },
+            methods: {
+                click: eventUtil.debounce(function(){
+                    this.clickCount++
+                }, 100)
+            },
+            template:
+                `<div>
+                    <button class="btn" @click="click"></button>
+                </div>`
+        }
+        var div = document.createElement('div')
+        const vm = new Vue({
+            template: `<div><Constructor ref="c1"/><Constructor ref="c2"/></div>`,
+            components: {
+                Constructor
+            },
+            el: div,
+        })
+        setTimeout(()=>{
+            let buttons = vm.$el.querySelectorAll('button')
+            let button1 = buttons[0]
+            let button2 = buttons[1]
+            //模拟个点击3次
+            setTimeout(()=>{
+                button1.click()
+            }, 0)
+            setTimeout(()=>{
+                button1.click()
+            }, 0)
+            setTimeout(()=>{
+                button2.click()
+            }, 0)
+            setTimeout(()=>{
+                button2.click()
+            }, 0)
+        })
+
+        setTimeout(()=>{
+            if(vm.$refs.c1.clickCount != 0 || vm.$refs.c2.clickCount != 0){
+                defer1.reject()
+            }
+        }, 90)
+
+        setTimeout(()=>{
+            //仅最后一次生效
+            if(vm.$refs.c1.clickCount == 0 || vm.$refs.c2.clickCount == 1){
+                defer1.resolve()
+            } else {
+                defer1.reject()
+            }
+        }, 150)
+
+        await defer1.promise
+    })
     it('after测试', async () => {
         var defer1 = new Defer
         const Constructor = Vue.extend({
@@ -517,6 +635,60 @@ describe('vue-event-util', () => {
             setTimeout(()=>{
                 button2.click()
                 if(vm.clickCount == 2){
+                    defer1.resolve()
+                } else {
+                    defer1.reject()
+                }
+            }, 0)
+        })
+
+        await defer1.promise
+    })
+    it('after全局共享测试', async () => {
+        var defer1 = new Defer
+        const Constructor = {
+            data: function(){
+                return {
+                    clickCount: 0
+                }
+            },
+            methods: {
+                click: eventUtil.after(function(){
+                    this.clickCount++
+                }, 3),
+            },
+            template:
+                `<div>
+                <button class="btn" @click="click"></button>
+                </div>`
+        }
+        var div = document.createElement('div')
+        const vm = new Vue({
+            template: `<div><Constructor ref="c1"/><Constructor ref="c2"/></div>`,
+            components: {
+                Constructor
+            },
+            el: div,
+        })
+        setTimeout(()=>{
+            let buttons = vm.$el.querySelectorAll('button')
+            let button1 = buttons[0]
+            let button2 = buttons[1]
+            setTimeout(()=>{
+                button1.click()
+                if(vm.$refs.c1.clickCount != 0 || vm.$refs.c2.clickCount != 0){
+                    defer1.reject()
+                }
+            }, 0)
+            setTimeout(()=>{
+                button2.click()
+                if(vm.$refs.c1.clickCount != 0 || vm.$refs.c2.clickCount != 0){
+                    defer1.reject()
+                }
+            }, 0)
+            setTimeout(()=>{
+                button1.click()
+                if(vm.$refs.c1.clickCount == 1 && vm.$refs.c2.clickCount == 0){
                     defer1.resolve()
                 } else {
                     defer1.reject()
@@ -681,6 +853,62 @@ describe('vue-event-util', () => {
             setTimeout(()=>{
                 button2.click()
                 if(vm.clickCount == 4){
+                    defer1.resolve()
+                } else {
+                    defer1.reject()
+                }
+            }, 0)
+        })
+
+        await defer1.promise
+    })
+    it('before全局共享测试', async () => {
+        var defer1 = new Defer
+
+        const Constructor = {
+            data: function(){
+                return {
+                    clickCount: 0
+                }
+            },
+            methods: {
+                click: eventUtil.before(function(){
+                    this.clickCount++
+                }, 3),
+            },
+            template:
+                `<div>
+                <button class="btn" @click="click"></button>
+                </div>`
+        }
+        var div = document.createElement('div')
+        const vm = new Vue({
+            template: `<div><Constructor ref="c1"/><Constructor ref="c2"/></div>`,
+            components: {
+                Constructor
+            },
+            el: div,
+        })
+        setTimeout(()=>{
+            let buttons = vm.$el.querySelectorAll('button')
+            let button1 = buttons[0]
+            let button2 = buttons[1]
+            //模拟点击3次
+            setTimeout(()=>{
+                button1.click()
+                if(vm.$refs.c1.clickCount != 1 || vm.$refs.c2.clickCount != 0){
+                    defer1.reject()
+                }
+            }, 0)
+            setTimeout(()=>{
+                button2.click()
+                if(vm.$refs.c1.clickCount != 1 || vm.$refs.c2.clickCount != 1){
+                    defer1.reject()
+                }
+            }, 0)
+            setTimeout(()=>{
+                button1.click()
+                if(vm.$refs.c1.clickCount == 1 && vm.$refs.c2.clickCount == 1){
                     defer1.resolve()
                 } else {
                     defer1.reject()

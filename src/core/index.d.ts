@@ -10,10 +10,11 @@ type DecoratorFunction = {
 type VEU = {
     install(vue: Vue, options: any): any,
     version: string,
-    throttle: DecoratorFunction
-    after: DecoratorFunction
-    before: DecoratorFunction
-    defer: DecoratorFunction
+    delay: <T extends Function>(callback: T, wait?: number)=> T
+    throttle: <T extends Function>(callback: T, wait?: number)=> T
+    debounce: <T extends Function>(callback: T, wait?: number)=> T
+    after: <T extends Function>(callback: T, time?: number)=> T
+    before: <T extends Function>(callback: T, time?: number)=> T
 }
 
 declare const veu: VEU
@@ -27,7 +28,7 @@ declare const after: DecoratorFunction
 declare const afterKey: DecoratorFunction
 declare const before: DecoratorFunction
 declare const beforeKey: DecoratorFunction
-declare const defer: DecoratorFunction
+declare const delay: DecoratorFunction
 
 
 export default veu
@@ -40,5 +41,5 @@ export {
     throttleKey,
     afterKey,
     beforeKey,
-    defer,
+    delay,
 }

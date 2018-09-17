@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Defer from './Defer'
 import eventUtil from '../../../src/core'
 import {TestThrottle} from './TestThrottle'
-import {TestDefer} from './TestDefer'
+import {TestDelay} from './TestDelay'
 import {TestDebounce} from './TestDebounce'
 import {TestAfter} from './TestAfter'
 import {TestBefore} from './TestBefore'
@@ -10,7 +10,7 @@ import {TestBefore} from './TestBefore'
 Vue.use(eventUtil)
 
 describe('vue-event-util', () => {
-    it('defer注解测试', async () => {
+    it('delay注解测试', async () => {
         var defer1 = new Defer
         var defer2 = new Defer
 
@@ -26,9 +26,9 @@ describe('vue-event-util', () => {
         }, 90)
 
         const Constructor = Vue.extend({
-            template: '<TestDefer ref="test"/>',
+            template: '<TestDelay ref="test"/>',
             components:{
-                TestDefer
+                TestDelay
             }
         })
         var div = document.createElement('div')

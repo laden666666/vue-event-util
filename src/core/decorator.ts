@@ -14,8 +14,8 @@ function definedDecorator(methodName: string, isKeyMethod: boolean, ...arg: any[
     }
 }
 
-export function defer(wait: number) {
-    return definedDecorator('defer', false, wait)
+export function delay(wait: number) {
+    return definedDecorator('delay', false, wait)
 }
 export function throttle(wait?: number) {
     return definedDecorator('throttle', false, wait)

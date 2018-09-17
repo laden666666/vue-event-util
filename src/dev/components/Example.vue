@@ -1,7 +1,7 @@
 <template>
     <div class="test">
-        <button @click="$defer(counting, 1000)(count)" >defer</button>
-        <button @click="defer(count)" >defer2</button>
+        <button @click="$delay(counting, 1000)(count)" >delay</button>
+        <button @click="delay(count)" >delay2</button>
         <button @click="$throttle(counting, 1000)(count)" >throttle</button>
         <button @click="throttle(count)" >throttle2</button>
         <button @click="$debounce(counting, 1000)(count)" >debounce</button>
@@ -25,8 +25,8 @@ export default {
             console.log(a)
             this.count++
         },
-        defer(a){
-            this.$defer((a)=>{
+        delay(a){
+            this.$delay((a)=>{
                 this.counting(a)
             }, 1000)(a)
         },

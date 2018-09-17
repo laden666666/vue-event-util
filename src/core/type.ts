@@ -2,18 +2,18 @@ import Vue from 'vue'
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $defer(callback: Function, wait?: number): any;
+        $delay<T extends Function>(callback: T, wait?: number): T;
 
-        $throttle(callbackID: string, callback: Function, wait?: number): any;
-        $throttle(callback: Function, wait?: number): any;
+        $throttle<T extends Function>(callbackID: string, callback: T, wait?: number): T;
+        $throttle<T extends Function>(callback: T, wait?: number): T;
 
-        $debounce(callbackID: string, callback: Function, wait?: number): any;
-        $debounce(callback: Function, wait?: number): any;
+        $debounce<T extends Function>(callbackID: string, callback: T, wait?: number): T;
+        $debounce<T extends Function>(callback: T, wait?: number): T;
 
-        $after(callbackID: string, callback: Function, time?: number): any;
-        $after(callback: Function, time?: number): any;
+        $after<T extends Function>(callbackID: string, callback: T, time?: number): T;
+        $after<T extends Function>(callback: T, time?: number): T;
 
-        $before(callbackID: string, callback: Function, time?: number): any;
-        $before(callback: Function, time?: number): any;
+        $before<T extends Function>(callbackID: string, callback: Function, time?: number): Function;
+        $before<T extends Function>(callback: T, time?: number): T;
     }
 }

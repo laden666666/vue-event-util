@@ -12,7 +12,7 @@ import hash from 'hash-sum'
 import {
     debounce,
     debounceKey,
-    defer,
+    delay,
     throttle,
     throttleKey,
     after,
@@ -93,7 +93,7 @@ function install(Vue, options) {
      * @param {*} fn
      * @param {*} wait
      */
-    Vue.prototype.$defer = function(eventKey, fn, wait = 0){
+    Vue.prototype.$delay = function(eventKey, fn, wait = 0){
         if(typeof eventKey === 'function'){
             wait = fn || 0
             fn = eventKey
@@ -139,7 +139,7 @@ function install(Vue, options) {
 export {
     debounce,
     debounceKey,
-    defer,
+    delay,
     throttle,
     throttleKey,
     after,
@@ -151,8 +151,9 @@ export {
 export default {
     install,
     version,
-    debounc: _debounce,
+    debounce: _debounce,
     throttle: _throttle,
     after: _after,
+    before: _before,
     delay: _delay,
 }

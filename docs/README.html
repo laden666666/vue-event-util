@@ -229,7 +229,137 @@ pre[class*="language-"] {
     padding: 1.2em 1.4em;
     line-height: 1.5em;
     margin: 0;
-}.mydoc{
+}.mydoc_h3{
+    margin: 35px 0 0.8em;
+}
+.mydoc_h3_a{
+    font-size: 1.3em;
+    text-decoration: none;
+    color: #2c3e50;
+}
+.mydoc_h3_a::before{
+    content: '';
+    display: block;
+    margin-top: -30px;
+    height: 30px;
+    visibility: hidden;
+}
+.mydoc_h3_h3{
+    margin: 5px 0 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    padding-bottom: .6em;
+}
+.mydoc_h3_content{
+
+}.mydoc_h4{
+    margin: 35px 0 0.8em;
+}
+.mydoc_h4_a{
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #2c3e50;
+}
+.mydoc_h4_a::before{
+    content: '';
+    display: block;
+    margin-top: -20px;
+    height: 20px;
+    visibility: hidden;
+}
+.mydoc_h4_h4{
+    margin: 5px 0 8px;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    padding-bottom: 0.3em;
+}
+.mydoc_h4_content{
+
+}.mydoc_api{
+    line-height: 16px;
+    position: relative;
+    z-index: 1;
+    color: #333;
+    margin-top: 10px;
+}
+.mydoc_api_describe {
+    -webkit-box-sizing : border-box ;
+            box-sizing : border-box ;
+    position : relative ;
+    padding : 24px 15px ;
+    margin : 0px 0px 15px ;
+    border-color : rgb(221, 221, 221) ;
+    border-style : solid ;
+    border-width : 1px ;
+    -webkit-box-shadow : none ;
+            box-shadow : none ;
+    background-color : rgb(255, 255, 255) ;
+    border-radius : 4px 4px 0px 0px ;
+    color : rgb(51, 51, 51) ;
+}
+.mydoc_api_content {
+    -webkit-box-sizing : border-box ;
+            box-sizing : border-box ;
+    margin : -16px 0px 15px ;
+    padding : 9px 14px ;
+    background-color : rgb(247, 247, 249) ;
+    border : 1px solid rgb(225, 225, 232) ;
+    border-radius : 0px 0px 4px 4px ;
+    color : rgb(51, 51, 51) ;
+}
+
+.mydoc_api_table{
+    margin : 15px 0px 0px ;
+    padding : 0px ;
+    border : 1px solid rgb(170, 170, 170) ;
+    border-collapse : collapse ;
+    width : 100% ;
+    color : rgb(0, 0, 0) ;
+    font-size : 14px ;
+    background-color : rgb(253, 252, 248) ;
+}
+
+.mydoc_api_table tr{
+    margin : 0px ;
+    padding : 0px ;
+    border : 0px ;
+    background-color : rgb(255, 255, 255) ;
+}
+.mydoc_api_table tr:nth-child(odd){
+    background-color : rgb(245, 245, 245) ;
+}
+.mydoc_api_table tr:nth-child(1){
+    background-color : rgb(63, 63, 63);
+}
+
+.mydoc_api_table th{
+    margin : 0px ;
+    padding : 5px 15px 5px 6px ;
+    border : 1px solid rgb(63, 63, 63) ;
+    vertical-align : baseline ;
+    background-color : rgb(63, 63, 63) ;
+    text-align : left ;
+    color : rgb(255, 255, 255) ;
+    width : 123px ;
+    word-break: break-all;
+    font-weight: normal;
+}
+
+.mydoc_api_table td{
+    margin : 0px ;
+    padding : 6px 15px 6px 6px ;
+    border : 1px solid rgb(170, 170, 170) ;
+    vertical-align : text-top ;
+    word-break: break-all;
+}
+.mydoc_api_table td{
+    margin : 0px ;
+    padding : 6px 15px 6px 6px ;
+    border : 1px solid rgb(170, 170, 170) ;
+    vertical-align : text-top ;
+}
+
+.mydoc{
     font-size: 14px;
     overflow: hidden;
 }</style>
@@ -245,15 +375,7 @@ pre[class*="language-"] {
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/v/vue-event-util.svg" alt="Version"></a>
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/dm/vue-event-util.svg" alt="Downloads"></a>
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
-            </p><table cellspacing="1" style="margin: 0 auto;font-size: 14px;background-color: #f9f9f9;color: #036;padding: 3px;border-radius: 4px;border: 1px solid rgba(220, 220, 220, .5);">
-    <colgroup width="100" span="7" align="center"></colgroup>
-    <tr style="height: 30px;">
-        <th align="center">Android</td><th align="center">Firefox</td><th align="center">Chrome</td><th align="center">IE</td><th align="center">iPhone</td><th align="center">Edge</td><th align="center">Safari</td>
-    </tr>
-    <tr style="color: #000;line-height: 28px;font-weight: bold;">
-        <td align="center" style="background-color: #60d848">>=4.4</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">>=9</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td>
-    </tr>
-</table><p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>、<strong class="mydoc_strong">函数延时</strong>等功能。<strong class="mydoc_strong">vue-event-util</strong>针对于这一情况，将<a class="mydoc_a" href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<strong class="mydoc_strong">vue-event-util</strong>提供的便携方法将其应用到Vue的事件中。</p><div class="mydoc_h2">
+            </p><p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>、<strong class="mydoc_strong">函数延时</strong>等功能。<strong class="mydoc_strong">vue-event-util</strong>针对于这一情况，将<a class="mydoc_a" href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<strong class="mydoc_strong">vue-event-util</strong>提供的便携方法将其应用到Vue的事件中。</p><div class="mydoc_h2">
                     <a class="mydoc_h2_a">
                         <h2 class="mydoc_h2_h2">源码</h2>
                     </a>
@@ -265,16 +387,22 @@ pre[class*="language-"] {
                         <h2 class="mydoc_h2_h2">功能</h2>
                     </a>
                     <div class="mydoc_h2_content">
-                        <ul class="mydoc_li"><li> 控件所有实例共享的函数防抖、函数节流、延时执行等功能</li></ul><ul class="mydoc_li"><li> 控件实例独享的函数防抖、函数节流、延时执行等功能</li></ul><ul class="mydoc_li"><li> 列表渲染的控件独享的函数防抖、函数节流、延时执行等功能</li></ul><ul class="mydoc_li"><li> 实现防止按钮连击</li></ul><ul class="mydoc_li"><li> 实现降低事件响应频率</li></ul><ul class="mydoc_li"><li> 对typescript的支持</li></ul>
+                        <ul class="mydoc_li"><li> 对Vue的事件响应函数提供函数防抖、函数节流、延时执行等函数处理功能</li></ul><ul class="mydoc_li"><li> 控件所有实例共享的事件函数处理</li></ul><ul class="mydoc_li"><li> 控件实例独享的事件函数处理</li></ul><ul class="mydoc_li"><li> 列表渲染的控件独享的事件函数处理</li></ul><ul class="mydoc_li"><li> 实现防止按钮连击</li></ul><ul class="mydoc_li"><li> 实现降低事件响应频率</li></ul><ul class="mydoc_li"><li> 对typescript的支持</li></ul>
                     </div>
                 </div><div class="mydoc_h2">
                     <a class="mydoc_h2_a">
-                        <h2 class="mydoc_h2_h2">安装</h2>
+                        <h2 class="mydoc_h2_h2">兼容性</h2>
                     </a>
                     <div class="mydoc_h2_content">
-                        <figure class='mydoc_code'>
-                    <pre class="mydoc_code_pre cm-s-eclipse">npm install vue<span class="token operator">-</span>event<span class="token operator">-</span>util</pre>
-                </figure>
+                        <table cellspacing="1" style="margin: 0 auto;font-size: 14px;background-color: #f9f9f9;color: #036;padding: 3px;border-radius: 4px;border: 1px solid rgba(220, 220, 220, .5);">
+    <colgroup width="100" span="7" align="center"></colgroup>
+    <tr style="height: 30px;">
+        <th align="center">Android</td><th align="center">Firefox</td><th align="center">Chrome</td><th align="center">IE</td><th align="center">iPhone</td><th align="center">Edge</td><th align="center">Safari</td>
+    </tr>
+    <tr style="color: #000;line-height: 28px;font-weight: bold;">
+        <td align="center" style="background-color: #60d848">>=4.4</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">>=9</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td><td align="center" style="background-color: #60d848">√</td>
+    </tr>
+</table>
                     </div>
                 </div><div class="mydoc_h2">
                     <a class="mydoc_h2_a">
@@ -285,11 +413,11 @@ pre[class*="language-"] {
                     <pre class="mydoc_code_pre cm-s-eclipse">fn <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span></pre>
                 </figure><p class="mydoc_p"> 但是这个处理对于Vue的template语法中的事件响应函数来说，实现起来很麻烦，我们以做<strong class="mydoc_strong">函数防抖</strong>为例，看看我们以往在Vue中是如何实现上述操作的。Vue的事件绑定有两种方法：<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">方法名绑定</a>和<a class="mydoc_a" href="https://cn.vuejs.org/v2/guide/events.html#%E5%86%85%E8%81%94%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">内联处理器</a>。<strong class="mydoc_strong">内联处理器</strong>允许我们提供一个表达式处理事件，因为Vue会生成一个匿名函数去执行绑定的表达式，每一次事件处理时候都会执行一次这个匿名函数，因此无法实现如<strong class="mydoc_strong">函数节流</strong>、<strong class="mydoc_strong">函数防抖</strong>这样的功能。</p><figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_.throttle(fn, 1000)()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>_.throttle(fn, 1000)()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数节流<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></pre>
-                </figure><p class="mydoc_p"> 因为每一次点击都会执行一次_.throttle方法，所以上述代码是无法实现对事件的函数防抖处理的。</p><p class="mydoc_p"> 另一种方法是先将函数进行处理，再通过方法名绑定或者内联处理器的方式绑定到Vue上面。</p><figure class='mydoc_code'>
+                </figure><p class="mydoc_p"> 因为每一次点击都会执行一次_.throttle方法，所以上述代码是无法实现对事件的函数节流处理的。</p><p class="mydoc_p"> 另一种方法是先将函数进行处理，再通过方法名绑定或者内联处理器的方式绑定到Vue上面。</p><figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数节流<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
     <span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
@@ -300,9 +428,9 @@ pre[class*="language-"] {
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
-                </figure><p class="mydoc_p"> 这样写也存在一个问题，就是所有控件公用一个防抖函数，当多个控件需要单独做函数防抖的话就没有办法了。而且在列表渲染，如果列表的每一个控件都要单独做函数防抖处理，这样就更麻烦了。</p><p class="mydoc_p"> 有时候我们甚至会借助watch来实现函数防抖的功能。如：</p><figure class='mydoc_code'>
+                </figure><p class="mydoc_p"> 这样写也存在一个问题，就是所有控件公用一个节流函数，当多个控件需要单独做函数节流的话就没有办法了。而且在列表渲染，如果列表的每一个控件都要单独做函数节流处理，这样就更麻烦了。</p><p class="mydoc_p"> 有时候我们甚至会借助watch来实现函数节流的功能。如：</p><figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数防抖<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@clikc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fn<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>函数节流<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
     <span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
@@ -321,7 +449,193 @@ pre[class*="language-"] {
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
-                </figure><p class="mydoc_p"> 方法是死的人是活的，我们肯定能找到更优雅的方式来做函数防抖或者其他类似的事情。<strong class="mydoc_strong">vue-event-util</strong>就是为了解决这个事情而生的。</p>
+                </figure><p class="mydoc_p"> 方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。<strong class="mydoc_strong">vue-event-util</strong>就是为了解决这个事情而生的。</p>
+                    </div>
+                </div><div class="mydoc_h2">
+                    <a class="mydoc_h2_a">
+                        <h2 class="mydoc_h2_h2">安装</h2>
+                    </a>
+                    <div class="mydoc_h2_content">
+                        <figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse">npm install vue<span class="token operator">-</span>event<span class="token operator">-</span>util</pre>
+                </figure><p class="mydoc_p"> 在浏览器环境中，直接将<strong class="mydoc_strong">vue-event-util.js</strong>文件引入即可。</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vue-event-util.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
+                </figure>
+                    </div>
+                </div><div class="mydoc_h2">
+                    <a class="mydoc_h2_a">
+                        <h2 class="mydoc_h2_h2">使用</h2>
+                    </a>
+                    <div class="mydoc_h2_content">
+                        <p class="mydoc_p"> 具体的使用方法可以参考<a class="mydoc_a" >xxx</a>，这里仅是简单介绍一下<strong class="mydoc_strong">vue-event-util</strong>常用使用方式</p><p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>提供了<strong class="mydoc_strong">delay</strong>、<strong class="mydoc_strong">throttle</strong>、<strong class="mydoc_strong">debounce</strong>、<strong class="mydoc_strong">after</strong>、<strong class="mydoc_strong">before</strong>等方法</p><ul class="mydoc_li"><li> delay: 延迟 wait 毫秒后调用 func</li></ul><ul class="mydoc_li"><li> debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。</li></ul><ul class="mydoc_li"><li> throttle: 创建一个节流函数，在 wait 秒内最多执行 func 一次的函数</li></ul><ul class="mydoc_li"><li> after: 此方法创建一个函数，当他被调用n或更多次之后将马上触发func</li></ul><ul class="mydoc_li"><li> before: 创建一个调用func的函数，通过this绑定和创建函数的参数调用func，调用次数不超过 n 次。</li></ul><div class="mydoc_h3">
+                <a class="mydoc_h3_a">
+                    <h3 class="mydoc_h3_h3">全局函数方法</h3>
+                </a>
+                <div class="mydoc_h3_content">
+                    <p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>提供了类似lodash的函数处理方法，这种使用方法，相当于作用于原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法，具体用法：</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token keyword">import</span> eventUtil <span class="token keyword">from</span> <span class="token string">'vue-event-util'</span>
+<span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
+    methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        delay<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        throttle<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        debounce<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        after<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        before<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">...</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></pre>
+                </figure><div class="mydoc_h4">
+                <a class="mydoc_h4_a">
+                    <h4 class="mydoc_h4_h4">eventUtil.delay</h4>
+                </a>
+                <div class="mydoc_h4_content">
+                    <div class="mydoc_api">
+                <div class="mydoc_api_describe">
+延迟 wait 毫秒后调用 callback</div>
+                <div class="mydoc_api_content">
+                    
+                    
+                    <p>参数</p>
+                    <table class="mydoc_api_table">
+                        <tr>
+                            <th>参数名</th><th>参数类型</th><th>参数说明</th>
+                        </tr>
+                        <tr>
+                            <td>callback</td><td>Function</td><td>延迟执行的函数</td>
+                        </tr><tr>
+                            <td>[wait]</td><td>number</td><td>延迟的时间，单位毫秒</td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                </div>
+            </div>
+                </div>
+            </div><div class="mydoc_h4">
+                <a class="mydoc_h4_a">
+                    <h4 class="mydoc_h4_h4">eventUtil.debounce</h4>
+                </a>
+                <div class="mydoc_h4_content">
+                    <div class="mydoc_api">
+                <div class="mydoc_api_describe">
+创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 callback 方法。</div>
+                <div class="mydoc_api_content">
+                    
+                    
+                    <p>参数</p>
+                    <table class="mydoc_api_table">
+                        <tr>
+                            <th>参数名</th><th>参数类型</th><th>参数说明</th>
+                        </tr>
+                        <tr>
+                            <td>callback</td><td>Function</td><td>需要做防抖函数</td>
+                        </tr><tr>
+                            <td>[wait]</td><td>number</td><td>延迟的时间，单位毫秒</td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                </div>
+            </div>
+                </div>
+            </div><div class="mydoc_h4">
+                <a class="mydoc_h4_a">
+                    <h4 class="mydoc_h4_h4">eventUtil.throttle</h4>
+                </a>
+                <div class="mydoc_h4_content">
+                    <div class="mydoc_api">
+                <div class="mydoc_api_describe">
+创建一个节流函数，在 wait 秒内最多执行 callback 一次的函数</div>
+                <div class="mydoc_api_content">
+                    
+                    
+                    <p>参数</p>
+                    <table class="mydoc_api_table">
+                        <tr>
+                            <th>参数名</th><th>参数类型</th><th>参数说明</th>
+                        </tr>
+                        <tr>
+                            <td>callback</td><td>Function</td><td>需要做节流函数</td>
+                        </tr><tr>
+                            <td>[wait]</td><td>number</td><td>节流时间，单位毫秒</td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                </div>
+            </div>
+                </div>
+            </div><div class="mydoc_h4">
+                <a class="mydoc_h4_a">
+                    <h4 class="mydoc_h4_h4">eventUtil.after</h4>
+                </a>
+                <div class="mydoc_h4_content">
+                    <div class="mydoc_api">
+                <div class="mydoc_api_describe">
+此方法创建一个函数，当他被调用n或更多次之后将马上触发callback</div>
+                <div class="mydoc_api_content">
+                    
+                    
+                    <p>参数</p>
+                    <table class="mydoc_api_table">
+                        <tr>
+                            <th>参数名</th><th>参数类型</th><th>参数说明</th>
+                        </tr>
+                        <tr>
+                            <td>callback</td><td>Function</td><td>用来限定的函数</td>
+                        </tr><tr>
+                            <td>[n]</td><td>number</td><td>方法应该在调用多少次后才执行</td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                </div>
+            </div>
+                </div>
+            </div><div class="mydoc_h4">
+                <a class="mydoc_h4_a">
+                    <h4 class="mydoc_h4_h4">eventUtil.before</h4>
+                </a>
+                <div class="mydoc_h4_content">
+                    <div class="mydoc_api">
+                <div class="mydoc_api_describe">
+创建一个调用func的函数，通过this绑定和创建函数的参数调用callback，调用次数不超过 n 次</div>
+                <div class="mydoc_api_content">
+                    
+                    
+                    <p>参数</p>
+                    <table class="mydoc_api_table">
+                        <tr>
+                            <th>参数名</th><th>参数类型</th><th>参数说明</th>
+                        </tr>
+                        <tr>
+                            <td>callback</td><td>Function</td><td>用来限定的函数</td>
+                        </tr><tr>
+                            <td>[n]</td><td>number</td><td>超过多少次不再调用callback</td>
+                        </tr>
+                    </table>
+                    
+                    
+                    
+                </div>
+            </div>
+                </div>
+            </div>
+                </div>
+            </div>
                     </div>
                 </div>
 </article>
