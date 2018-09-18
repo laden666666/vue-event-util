@@ -86,6 +86,9 @@
   },
   "keywords": [
     "vue",
+    "delay",
+    "throttle",
+    "debounce",
     "vue-plugin",
     "event-util",
     "vue-event-util",
