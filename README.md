@@ -5,21 +5,23 @@
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
         </p>
 
-**vue-event-util**，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流**、**函数防抖**、**函数延时**等功能。**vue-event-util**针对于这一情况，将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用**vue-event-util**提供的便携方法将其应用到Vue的事件中。
+**vue-event-util**，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流（throttle）**、**函数防抖（debounce）**、**函数延时（delay）**等扩展功能。**vue-event-util**将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用**vue-event-util**提供的便携方法将其应用到Vue的事件中。
+
 
 ## 源码
 
 [github](https://github.com/laden666666/vue-event-util "") ，[码云](https://gitee.com/laden666666/vue-event-util "") 
 
 
+
 ## 功能
-*   对Vue的事件响应函数提供函数防抖、函数节流、延时执行等函数处理功能
-*   控件所有实例共享的事件函数处理
-*   控件实例独享的事件函数处理
-*   列表渲染的控件独享的事件函数处理
-*   实现防止按钮连击
-*   实现降低事件响应频率
-*   对typescript的支持
+*   对Vue的事件响应函数提供**函数防抖（throttle）**、**函数节流（debounce）**、**延时执行（delay）**等函数处理功能
+*   0.对某控件**所有**实例共享的函数进行函数防抖和函数节流
+*   1.对某控件**各个**实例共享的函数进行函数防抖和函数节流
+*   2.对**列表渲染的控件**进行函数防抖和函数节流
+*   3.实现防止按钮连击
+*   4.实现降低事件响应频率
+
 
 ## 兼容性
 <center>
@@ -35,9 +37,10 @@
 </center>
 
 
+
 ## 插件解决的问题
 
-当我们对函数进行**柯里化**、**函数节流**、**函数防抖**处理的时候，往往需要使用到高级函数语法，将原有函数传入通过以入参传入，并以返回值的形式返回的处理后的函数。如lodash库对函数防抖的实现：
+当我们对函数进行**柯里化**、**函数节流**、**函数防抖**处理的时候，往往需要将原有函数**以入参传入**，并以**返回函数**的形式返回处理后的函数。如lodash库对函数防抖的实现：
 
 ```javascript
 fn = _.throttle(fn, 1000)
@@ -102,6 +105,7 @@ fn = _.throttle(fn, 1000)
 方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。**vue-event-util**就是为了解决这个事情而生的。
 
 
+
 ## 安装
 ```javascript
 npm install vue-event-util
@@ -113,46 +117,22 @@ npm install vue-event-util
 <script src="vue-event-util.js"></script>
 ```
 
+
 ## 使用
 
 具体的使用方法可以参考[xxx]( "") ，这里仅是简单介绍一下**vue-event-util**常用使用方式
 
 
-**vue-event-util**提供了**delay**、**throttle**、**debounce**、**after**、**before**等方法
+**vue-event-util**提供了lodash的**delay**、**throttle**、**debounce**等方法
 
 *   delay: 延迟 wait 毫秒后调用 func
 *   debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。
 *   throttle: 创建一个节流函数，在 wait 秒内最多执行 func 一次的函数
-*   after: 此方法创建一个函数，当他被调用n或更多次之后将马上触发func
-*   before: 创建一个调用func的函数，通过this绑定和创建函数的参数调用func，调用次数不超过 n 次。
-### 全局函数方法
 
-**vue-event-util**提供了类似lodash的函数处理方法，这种使用方法，相当于作用于原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法，具体用法：
+三种函数具体用法可以参考[lodash](https://lodash.com/docs "") 。
 
-```javascript
-import eventUtil from 'vue-event-util'
-export deflaut {
-    methods: {
-        delay: eventUtil.delay(function(argument){
-            ...
-        }, 100),
-        throttle: eventUtil.throttle(function(argument){
-            ...
-        }, 100),
-        debounce: eventUtil.debounce(function(argument){
-            ...
-        }, 100),
-        after: eventUtil.after(function(argument){
-            ...
-        }, 3),
-        before: eventUtil.before(function(argument){
-            ...
-        }, 3),
-    }
-}
 
-```
-#### eventUtil.delay
+#### delay
 
 >
 延迟 wait 毫秒后调用 callback
@@ -172,10 +152,11 @@ export deflaut {
 |Function|处理后的函数|
 
 
-#### eventUtil.debounce
+
+#### debounce
 
 >
-创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 callback 方法。
+创建一个 debounce（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 callback 方法。
 
 
 ##### 参数
@@ -183,6 +164,10 @@ export deflaut {
 |-|-|-|
 |callback|Function|需要做防抖函数|
 |wait|number|延迟的时间，单位毫秒|
+|options|object|选项对象|
+|options.leading|boolean|指定调用在延迟开始前，默认false|
+|options.maxWait|number|设置 func 允许被延迟的最大值|
+|options.trailing|boolean|指定调用在延迟结束后，默认true|
 
 
 
@@ -192,7 +177,8 @@ export deflaut {
 |Function|处理后的函数|
 
 
-#### eventUtil.throttle
+
+#### throttle
 
 >
 创建一个节流函数，在 wait 秒内最多执行 callback 一次的函数
@@ -203,6 +189,9 @@ export deflaut {
 |-|-|-|
 |callback|Function|需要做节流函数|
 |wait|number|节流时间，单位毫秒|
+|options|object|选项对象|
+|options.leading|boolean|指定调用在节流开始前，默认true|
+|options.trailing|boolean|指定调用在节流结束后，默认false（与lodash默认配置不同，主要是因为事件处理更常用trailing为false的情况，如防止按钮连击）|
 
 
 
@@ -212,45 +201,33 @@ export deflaut {
 |Function|处理后的函数|
 
 
-#### eventUtil.after
+这些方法可以通过3种方式对Vue控件的函数进行处理：
 
->
-此方法创建一个函数，当他被调用n或更多次之后将马上触发callback
-
-
-##### 参数
-|参数名|参数类型|参数说明|
-|-|-|-|
-|callback|Function|用来限定的函数|
-|n|number|方法应该在调用多少次后才执行|
+*   1.全局函数
+*   2.控件实例函数
+*   3.列表渲染函数
 
 
+### 全局函数
 
-##### 返回值
-|参数类型|参数说明|
-|-|-|
-|Function|处理后的函数|
+**vue-event-util**提供某控件**所有**实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过**vue-event-util**上提供的这些全局处理方法，具体用法如下：
 
+```javascript
+import eventUtil from 'vue-event-util'
+export deflaut {
+    methods: {
+        delay: eventUtil.delay(function(argument){
+            ...
+        }, 100),
+        throttle: eventUtil.throttle(function(argument){
+            ...
+        }, 100),
+        debounce: eventUtil.debounce(function(argument){
+            ...
+        }, 100),
+    }
+}
 
-#### eventUtil.before
-
->
-创建一个调用func的函数，通过this绑定和创建函数的参数调用callback，调用次数不超过 n 次
-
-
-##### 参数
-|参数名|参数类型|参数说明|
-|-|-|-|
-|callback|Function|用来限定的函数|
-|n|number|超过多少次不再调用callback|
-
-
-
-##### 返回值
-|参数类型|参数说明|
-|-|-|
-|Function|处理后的函数|
-
-
+```
 
 

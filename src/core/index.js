@@ -1,25 +1,13 @@
 import _debounce from 'lodash.debounce'
 import __throttle from 'lodash.throttle'
-import __before from 'lodash.before'
-import __after from 'lodash.after'
 import _delay from 'lodash.delay'
 
-const _throttle = (fn, wait=0)=>__throttle(fn, wait, {trailing: false})
-const _after = (fn, time=0)=>__after(time, fn)
-const _before = (fn, time=0)=>__before(time, fn)
+const _throttle = (fn, wait=0, options={})=>__throttle(fn, wait, {
+    leading: options.leading != null ? options.leading : true,
+    trailing: !!options.trailing,
+})
 
 import hash from 'hash-sum'
-import {
-    debounce,
-    debounceKey,
-    delay,
-    throttle,
-    throttleKey,
-    after,
-    afterKey,
-    before,
-    beforeKey
-} from './decorator'
 
 // 通过webpack的
 const version = PLUGIN_VERSION
@@ -93,7 +81,7 @@ function install(Vue, options) {
      * @param {*} fn
      * @param {*} wait
      */
-    Vue.prototype.$delay = function(eventKey, fn, wait = 0){
+    Vue.prototype.$delay = function(eventKey, fn, wait = 0, options){
         if(typeof eventKey === 'function'){
             wait = fn || 0
             fn = eventKey
@@ -105,17 +93,11 @@ function install(Vue, options) {
     var utilMethodArr = [
         [
             'throttle',
-            _throttle
+            _throttle,
         ], [
             'debounce',
-            _debounce
-        ], [
-            'after',
-            _after
-        ], [
-            'before',
-            _before
-        ]
+            _debounce,
+        ],
     ];
 
     // 将
@@ -123,8 +105,9 @@ function install(Vue, options) {
         let utilMethodName = utilMethodArr[i][0],
         utilMethod = utilMethodArr[i][1]
 
-        Vue.prototype['$' + utilMethodName] = function(eventKey, fn, time=0){
+        Vue.prototype['$' + utilMethodName] = function(eventKey, fn, time=0, options={}){
             if(typeof eventKey === 'function'){
+                options = time || {}
                 time = fn || 0
                 fn = eventKey
                 eventKey = ''
@@ -136,24 +119,10 @@ function install(Vue, options) {
     }
 }
 
-export {
-    debounce,
-    debounceKey,
-    delay,
-    throttle,
-    throttleKey,
-    after,
-    afterKey,
-    before,
-    beforeKey,
-}
-
 export default {
     install,
     version,
     debounce: _debounce,
     throttle: _throttle,
-    after: _after,
-    before: _before,
     delay: _delay,
 }

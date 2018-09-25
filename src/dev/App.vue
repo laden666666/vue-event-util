@@ -1,19 +1,16 @@
 <template>
     <div id="app">
         <Example/>
-        <TSExample/>
     </div>
 </template>
 
 <script>
 import Example from './components/Example'
-import TSExample from './components/TSExample.ts'
 
 export default {
     name: 'App',
     components: {
         Example,
-        TSExample
     }
 }
 </script>

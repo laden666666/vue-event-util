@@ -6,13 +6,8 @@
         <button @click="throttle(count)" >throttle2</button>
         <button @click="$debounce(counting, 1000)(count)" >debounce</button>
         <button @click="debounce(count)" >debounce2</button>
-        <button @click="$after(counting, 5)(count)" >after</button>
-        <button @click="after(count)" >after</button>
-        <button @click="$before(counting, 5)(count)" >before</button>
-        <button @click="before(count)" >before</button>
     </div>
 </template>
-
 <script>
 export default {
     data () {
