@@ -34,6 +34,12 @@
     position: relative;
     z-index: 1;
     color: #333;
+}.mydoc_inline_code{
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
 }.mydoc_strong{
     font-weight: 600;
     color: #2c3e50;
@@ -381,7 +387,7 @@ pre[class*="language-"] {
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/v/vue-event-util.svg" alt="Version"></a>
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/dm/vue-event-util.svg" alt="Downloads"></a>
                 <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
-            </p><p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong class="mydoc_strong">函数节流（throttle）</strong>、<strong class="mydoc_strong">函数防抖（debounce）</strong>、<strong class="mydoc_strong">函数延时（delay）</strong>等扩展功能。<strong class="mydoc_strong">vue-event-util</strong>将<a class="mydoc_a" href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<strong class="mydoc_strong">vue-event-util</strong>提供的便携方法将其应用到Vue的事件中。</p><div class="mydoc_h2">
+            </p><p class="mydoc_p"> <code class="mydoc_inline_code">vue-event-util</code>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong class="mydoc_strong">函数节流（throttle）</strong>、<strong class="mydoc_strong">函数防抖（debounce）</strong>、<strong class="mydoc_strong">函数延时（delay）</strong>等扩展功能。<code class="mydoc_inline_code">vue-event-util</code>将<a class="mydoc_a" href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code class="mydoc_inline_code">vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p><div class="mydoc_h2">
                     <a class="mydoc_h2_a">
                         <h2 class="mydoc_h2_h2">源码</h2>
                     </a>
@@ -455,7 +461,7 @@ pre[class*="language-"] {
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
-                </figure><p class="mydoc_p"> 方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。<strong class="mydoc_strong">vue-event-util</strong>就是为了解决这个事情而生的。</p>
+                </figure><p class="mydoc_p"> 方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。<code class="mydoc_inline_code">vue-event-util</code>就是为了解决这个事情而生的。</p>
                     </div>
                 </div><div class="mydoc_h2">
                     <a class="mydoc_h2_a">
@@ -473,7 +479,7 @@ pre[class*="language-"] {
                         <h2 class="mydoc_h2_h2">使用</h2>
                     </a>
                     <div class="mydoc_h2_content">
-                        <p class="mydoc_p"> 具体的使用方法可以参考<a class="mydoc_a" >xxx</a>，这里仅是简单介绍一下<strong class="mydoc_strong">vue-event-util</strong>常用使用方式</p><p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>提供了lodash的<strong class="mydoc_strong">delay</strong>、<strong class="mydoc_strong">throttle</strong>、<strong class="mydoc_strong">debounce</strong>等方法</p><ul class="mydoc_li"><li> delay: 延迟 wait 毫秒后调用 func</li></ul><ul class="mydoc_li"><li> debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。</li></ul><ul class="mydoc_li"><li> throttle: 创建一个节流函数，在 wait 秒内最多执行 func 一次的函数</li></ul><p class="mydoc_p"> 三种函数具体用法可以参考<a class="mydoc_a" href="https://lodash.com/docs">lodash</a>。</p><div class="mydoc_h4">
+                        <p class="mydoc_p"> 具体的使用方法可以参考<a class="mydoc_a" >xxx</a>，这里仅是简单介绍一下<code class="mydoc_inline_code">vue-event-util</code>常用使用方式</p><p class="mydoc_p"> <code class="mydoc_inline_code">vue-event-util</code>提供了lodash的<strong class="mydoc_strong">delay</strong>、<strong class="mydoc_strong">throttle</strong>、<strong class="mydoc_strong">debounce</strong>等方法</p><ul class="mydoc_li"><li> delay: 延迟 wait 毫秒后调用 func</li></ul><ul class="mydoc_li"><li> debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。</li></ul><ul class="mydoc_li"><li> throttle: 创建一个节流函数，在 wait 秒内最多执行 func 一次的函数</li></ul><p class="mydoc_p"> 三种函数具体用法可以参考<a class="mydoc_a" href="https://lodash.com/docs">lodash</a>。</p><div class="mydoc_h4">
                 <a class="mydoc_h4_a">
                     <h4 class="mydoc_h4_h4">delay</h4>
                 </a>
@@ -606,7 +612,7 @@ pre[class*="language-"] {
                     <h3 class="mydoc_h3_h3">全局函数</h3>
                 </a>
                 <div class="mydoc_h3_content">
-                    <p class="mydoc_p"> <strong class="mydoc_strong">vue-event-util</strong>提供某控件<strong class="mydoc_strong">所有</strong>实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过<strong class="mydoc_strong">vue-event-util</strong>上提供的这些全局处理方法，具体用法如下：</p><figure class='mydoc_code'>
+                    <p class="mydoc_p"> <code class="mydoc_inline_code">vue-event-util</code>提供某控件<strong class="mydoc_strong">所有</strong>实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过<code class="mydoc_inline_code">vue-event-util</code>上提供的这些全局处理方法，具体用法如下：</p><figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse"><span class="token keyword">import</span> eventUtil <span class="token keyword">from</span> <span class="token string">'vue-event-util'</span>
 <span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
     methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -620,6 +626,28 @@ pre[class*="language-"] {
             <span class="token operator">...</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></pre>
+                </figure>
+                </div>
+            </div><div class="mydoc_h3">
+                <a class="mydoc_h3_a">
+                    <h3 class="mydoc_h3_h3">控件实例函数</h3>
+                </a>
+                <div class="mydoc_h3_content">
+                    <p class="mydoc_p"> <code class="mydoc_inline_code">vue-event-util</code>在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，具体用法如下：</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token keyword">import</span> eventUtil <span class="token keyword">from</span> <span class="token string">'vue-event-util'</span>
+<span class="token keyword">export</span> deflaut <span class="token punctuation">{</span>
+methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    delay<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">delay</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    throttle<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">throttle</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    debounce<span class="token punctuation">:</span> eventUtil<span class="token punctuation">.</span><span class="token function">debounce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 <span class="token punctuation">}</span></pre>
                 </figure>
                 </div>

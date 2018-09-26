@@ -3,7 +3,7 @@
 
     <npm-info version downloads license name="vue-event-util"></npm-info>
 
-    <p><strong>vue-event-util</strong>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong>等扩展功能。<strong>vue-event-util</strong>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<strong>vue-event-util</strong>提供的便携方法将其应用到Vue的事件中。</p>
+    <p><code>vue-event-util</code>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong>等扩展功能。<code>vue-event-util</code>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code>vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p>
 
     <h2>源码</h2>
     <p><a href="https://github.com/laden666666/vue-event-util">github</a>，<a href="https://gitee.com/laden666666/vue-event-util">码云</a></p>
@@ -73,7 +73,7 @@
     }
 </script>`
 }</code>
-    <p>方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。<strong>vue-event-util</strong>就是为了解决这个事情而生的。</p>
+    <p>方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。<code>vue-event-util</code>就是为了解决这个事情而生的。</p>
 
     <h2>安装</h2>
     <code lang="javascript">{
@@ -85,8 +85,8 @@
     }</code>
 
     <h2>使用</h2>
-    <p>具体的使用方法可以参考<a>xxx</a>，这里仅是简单介绍一下<strong>vue-event-util</strong>常用使用方式</p>
-    <p><strong>vue-event-util</strong>提供了lodash的<strong>delay</strong>、<strong>throttle</strong>、<strong>debounce</strong>等方法</p>
+    <p>具体的使用方法可以参考<a>xxx</a>，这里仅是简单介绍一下<code>vue-event-util</code>常用使用方式</p>
+    <p><code>vue-event-util</code>提供了lodash的<strong>delay</strong>、<strong>throttle</strong>、<strong>debounce</strong>等方法</p>
 
     <li>delay: 延迟 wait 毫秒后调用 func</li>
     <li>debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。</li>
@@ -128,7 +128,7 @@
     <li>3.列表渲染函数</li>
 
     <h3>全局函数</h3>
-    <p><strong>vue-event-util</strong>提供某控件<strong>所有</strong>实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过<strong>vue-event-util</strong>上提供的这些全局处理方法，具体用法如下：</p>
+    <p><code>vue-event-util</code>提供某控件<strong>所有</strong>实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过<code>vue-event-util</code>上提供的这些全局处理方法，具体用法如下：</p>
 
     <code lang="javascript">{
 `import eventUtil from 'vue-event-util'
@@ -146,5 +146,122 @@ export deflaut {
     }
 }
 `}</code>
+
+<h3>控件实例函数</h3>
+<p><code>vue-event-util</code>在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，针对Vue事件绑定函数的方法不同，<code>vue-event-util</code>提供两种不同的方法：</p>
+<p>可以在方法里面使用$xxx函数里调用的方式，方法名绑定，如</p>
+<code lang="html">{
+`<template>
+    <div class="test">
+        <button @click="$delay(counting, 1000)(count)" >delay</button>
+        <button @click="delay(count)" >delay2</button>
+        <button @click="$throttle(counting, 1000)(count)" >throttle</button>
+        <button @click="throttle(count)" >throttle2</button>
+        <button @click="$debounce(counting, 1000)(count)" >debounce</button>
+        <button @click="debounce(count)" >debounce2</button>
+    </div>
+</template>
+<script>
+export default {
+    data () {
+        return {
+            count: 0
+        }
+    },
+    methods: {
+        counting(a){
+            console.log(a)
+            this.count++
+        },
+        delay(a){
+            this.$delay((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        throttle(a){
+            this.$throttle((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        debounce(a){
+            this.$debounce((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        after(a){
+            this.$after((a)=>{
+                this.counting(a)
+            }, 5)(a)
+        },
+        before(a){
+            this.$before((a)=>{
+                this.counting(a)
+            }, 5)(a)
+        },
+    },
+    components:{
+    }
+}
+</script>
+`}</code>
+
+<h3>列表渲染函数</h3>
+<p>当出现列表循环的时候，如果希望每一个循环<code>vue-event-util</code>在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，针对Vue事件绑定函数的方法不同，<code>vue-event-util</code>提供两种不同的方法：</p>
+<p>可以在方法里面使用$xxx函数里调用的方式，方法名绑定，如</p>
+<code lang="html">{
+`<template>
+    <div class="test">
+        <button @click="$delay(counting, 1000)(count)" >delay</button>
+        <button @click="delay(count)" >delay2</button>
+        <button @click="$throttle(counting, 1000)(count)" >throttle</button>
+        <button @click="throttle(count)" >throttle2</button>
+        <button @click="$debounce(counting, 1000)(count)" >debounce</button>
+        <button @click="debounce(count)" >debounce2</button>
+    </div>
+</template>
+<script>
+export default {
+    data () {
+        return {
+            count: 0
+        }
+    },
+    methods: {
+        counting(a){
+            console.log(a)
+            this.count++
+        },
+        delay(a){
+            this.$delay((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        throttle(a){
+            this.$throttle((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        debounce(a){
+            this.$debounce((a)=>{
+                this.counting(a)
+            }, 1000)(a)
+        },
+        after(a){
+            this.$after((a)=>{
+                this.counting(a)
+            }, 5)(a)
+        },
+        before(a){
+            this.$before((a)=>{
+                this.counting(a)
+            }, 5)(a)
+        },
+    },
+    components:{
+    }
+}
+</script>
+`}</code>
+
 
 </doc>

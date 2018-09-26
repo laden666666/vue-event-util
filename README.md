@@ -5,7 +5,7 @@
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
         </p>
 
-**vue-event-util**，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流（throttle）**、**函数防抖（debounce）**、**函数延时（delay）**等扩展功能。**vue-event-util**将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用**vue-event-util**提供的便携方法将其应用到Vue的事件中。
+`vue-event-util`，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流（throttle）**、**函数防抖（debounce）**、**函数延时（delay）**等扩展功能。`vue-event-util`将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用`vue-event-util`提供的便携方法将其应用到Vue的事件中。
 
 
 ## 源码
@@ -102,7 +102,7 @@ fn = _.throttle(fn, 1000)
 </script>
 ```
 
-方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。**vue-event-util**就是为了解决这个事情而生的。
+方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。`vue-event-util`就是为了解决这个事情而生的。
 
 
 
@@ -120,10 +120,10 @@ npm install vue-event-util
 
 ## 使用
 
-具体的使用方法可以参考[xxx]( "") ，这里仅是简单介绍一下**vue-event-util**常用使用方式
+具体的使用方法可以参考[xxx]( "") ，这里仅是简单介绍一下`vue-event-util`常用使用方式
 
 
-**vue-event-util**提供了lodash的**delay**、**throttle**、**debounce**等方法
+`vue-event-util`提供了lodash的**delay**、**throttle**、**debounce**等方法
 
 *   delay: 延迟 wait 毫秒后调用 func
 *   debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。
@@ -210,7 +210,7 @@ npm install vue-event-util
 
 ### 全局函数
 
-**vue-event-util**提供某控件**所有**实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过**vue-event-util**上提供的这些全局处理方法，具体用法如下：
+`vue-event-util`提供某控件**所有**实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过`vue-event-util`上提供的这些全局处理方法，具体用法如下：
 
 ```javascript
 import eventUtil from 'vue-event-util'
@@ -226,6 +226,29 @@ export deflaut {
             ...
         }, 100),
     }
+}
+
+```
+
+
+### 控件实例函数
+
+`vue-event-util`在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，具体用法如下：
+
+```javascript
+import eventUtil from 'vue-event-util'
+export deflaut {
+methods: {
+    delay: eventUtil.delay(function(argument){
+        ...
+    }, 100),
+    throttle: eventUtil.throttle(function(argument){
+        ...
+    }, 100),
+    debounce: eventUtil.debounce(function(argument){
+        ...
+    }, 100),
+}
 }
 
 ```
