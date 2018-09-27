@@ -111,10 +111,22 @@ fn = _.throttle(fn, 1000)
 npm install vue-event-util
 ```
 
+然后在js中执行
+
+```javascript
+import vueEventUtil from 'vue-event-util'
+import Vue from 'vue'
+
+Vue.use(vueEventUtil)
+```
+
 在浏览器环境中，直接将**vue-event-util.js**文件引入即可。
 
 ```html
 <script src="vue-event-util.js"></script>
+<script>
+    Vue.use(vueEventUtil)
+</script>
 ```
 
 
@@ -379,7 +391,7 @@ export default {
 
 ## 例子
 
-防止按钮连击：
+防止按钮连击：[docs/ButtonSafe.html](https://laden666666.github.io/vue-event-util/ButtonSafe.html "") 
 
 
 事件降频触发：

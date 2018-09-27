@@ -282,7 +282,7 @@ export default {
     <p><code>vue-event-util</code>将每一个需要处理的函数toString，然后和其他参数（key，wait，option）一起做一个hash，最后用这个hash值做key将处理后的函数缓存起来。这是一个享元模式，如果hash已经存在就从缓存里面取，如果不存在就对函数进行处理，再缓存。因为如果一个函数的key、wait、option都相同，那这个函数的hash值也相同，所以就可以缓存这个函数了。</p>
 
     <h2>例子</h2>
-    <p>防止按钮连击：</p>
+    <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a></p>
     <p>事件降频触发：</p>
     <p>事件延时触发：</p>
 </doc>

@@ -470,8 +470,16 @@ pre[class*="language-"] {
                     <div class="mydoc_h2_content">
                         <figure class='mydoc_code'>
                     <pre class="mydoc_code_pre cm-s-eclipse">npm install vue<span class="token operator">-</span>event<span class="token operator">-</span>util</pre>
+                </figure><p class="mydoc_p"> 然后在js中执行</p><figure class='mydoc_code'>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token keyword">import</span> vueEventUtil <span class="token keyword">from</span> <span class="token string">'vue-event-util'</span>
+<span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>vueEventUtil<span class="token punctuation">)</span></pre>
                 </figure><p class="mydoc_p"> 在浏览器环境中，直接将<strong class="mydoc_strong">vue-event-util.js</strong>文件引入即可。</p><figure class='mydoc_code'>
-                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vue-event-util.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
+                    <pre class="mydoc_code_pre cm-s-eclipse"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>vue-event-util.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>vueEventUtil<span class="token punctuation">)</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></pre>
                 </figure>
                     </div>
                 </div><div class="mydoc_h2">
@@ -767,7 +775,7 @@ pre[class*="language-"] {
                         <h2 class="mydoc_h2_h2">例子</h2>
                     </a>
                     <div class="mydoc_h2_content">
-                        <p class="mydoc_p"> 防止按钮连击：</p><p class="mydoc_p"> 事件降频触发：</p><p class="mydoc_p"> 事件延时触发：</p>
+                        <p class="mydoc_p"> 防止按钮连击：<a class="mydoc_a" href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a></p><p class="mydoc_p"> 事件降频触发：</p><p class="mydoc_p"> 事件延时触发：</p>
                     </div>
                 </div>
 </article>
