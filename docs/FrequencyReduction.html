@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./vue-element-resize-event.js"></script>
+    <script src="./vue-event-util.js"></script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .app{
+            display: flex;
+        }
+        .example{
+            margin: 0;
+            background: #e6e6e6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            flex: 1;
+        }
+        .elresize{
+            background: red;
+            width: 100px;
+            height: 100px;
+            resize: both;
+        }
+        .box {
+            position: relative;
+            background: #2ecc71;
+        }
+        .text{
+            font-size: 12px;
+            color: #de5c5c;
+        }
+        .label{
+            width: 220px;
+            height: 40px;
+            line-height: 40px;
+            text-align: left;
+        }
+        .title{
+            width: 50px;
+            display: inline-block;
+        }
+        .range{
+            width: 140px;
+            -webkit-appearance: none;
+            background: #059CFA;
+            height: 3px;
+            outline: none;
+            vertical-align: middle;
+        }
+        .range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 26px;
+            width: 26px;
+            background: #fff;
+            border-radius: 50%;
+            border: solid 1px #ddd;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="app" class="app">
+        <div id="example1" class="example">
+            <label class="label">
+                <span class="title">width:</span>
+                <input id="widthInput" type="range" class="range" max="200" min="100" v-model="width">px
+            </label>
+            <label class="label">
+                <span class="title">height:</span>
+                <input id="heightInput" type="range" class="range" max="200" min="100" v-model="height">px
+            </label>
+            <p class="text">未对elresize事件响应做降频处理，每次Elresize大小改变的时候，resizeCount的数都会改变一次</p>
+
+            <Elresize class="box" :style="{width: width + 'px', height: height + 'px'}" @elresize="test">
+                resize count : {{resizeCount}}
+            </Elresize>
+        </div>
+        <div id="example2"  class="example">
+            <label class="label">
+                <span class="title">width:</span>
+                <input id="widthInput" type="range" class="range" max="200" min="100" v-model="width">px
+            </label>
+            <label class="label">
+                <span class="title">height:</span>
+                <input id="heightInput" type="range" class="range" max="200" min="100" v-model="height">px
+            </label>
+
+            <p class="text">对elresize事件响应做降频处理，每隔500毫秒响应一次Elresize大小改变的事件</p>
+            <!-- 对elresize做降频处理 -->
+            <Elresize class="box" :style="{width: width + 'px', height: height + 'px'}" @elresize="$debounce(test, 500, {maxWait: 500, leading: true})()">
+                resize count : {{resizeCount}}
+            </Elresize>
+        </div>
+    </div>
+    <script>
+        Vue.use(vueEventUtil)
+        Vue.use(vueElementResizeEvent)
+        var app = new Vue({
+            el: '#example1',
+            data: {
+                width: '200',
+                height: '200',
+                resizeCount: 0
+            },
+            methods: {
+                test(e){
+                    this.resizeCount++
+                },
+            }
+        })
+        var app = new Vue({
+            el: '#example2',
+            data: {
+                width: '200',
+                height: '200',
+                resizeCount: 0
+            },
+            methods: {
+                test(e){
+                    this.resizeCount++
+                },
+            }
+        })
+    </script>
+</body>
+</html>

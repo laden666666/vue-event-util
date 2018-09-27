@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="./vue-event-util.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .example{
+            max-width: 400px;
+            padding: 10px;
+        }
+        .example .text{
+            font-size: 12px;
+            color: #de5c5c;
+        }
+        .example button{
+            width: 100%;
+            margin-left: 0!important;
+            margin: 10px 0!important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+            <el-row>
+                <el-col :span="12"><div class="example">
+                    <p>未做延时处理</p>
+                    <p class="text">点击按钮，会立刻弹出一个消息框</p>
+                    {{time}}
+                    <el-button type="primary" @click="click(time)">点击我</el-button>
+                </div></el-col>
+                <el-col :span="12"><div class="example">
+                    <p>做了延时处理</p>
+                    <p class="text">点击按钮后，会在1秒后才会弹出一个消息框</p>
+                    {{time}}
+                    <!-- 使用$delay延时执行 -->
+                    <el-button type="primary" @click="$delay(click, 1000)(time)">点击我</el-button>
+                </div></el-col>
+            </el-row>
+        </div>
+    </div>
+    <script>
+        Vue.use(vueEventUtil)
+        var app = new Vue({
+            el: '#app',
+            data: function(){
+                return {
+                    time: this.format(new Date())
+                }
+            },
+            methods: {
+                click(time){
+                    const h = this.$createElement;
+                    this.$notify({
+                        title: '标题名称',
+                        message: h('i', { style: 'color: teal'}, '点击时间' + time),
+                        duration: 1000
+                    });
+                },
+                format(date){
+                    return date.toJSON().replace('T', ' ').substr(0, 19)
+                }
+            },
+            created(){
+                var _this = this
+                setInterval(function(){
+                    _this.time = _this.format(new Date())
+                }, 100)
+            },
+        })
+    </script>
+</body>
+</html>

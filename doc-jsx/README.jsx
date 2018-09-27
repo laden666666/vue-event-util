@@ -283,6 +283,6 @@ export default {
 
     <h2>例子</h2>
     <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a></p>
-    <p>事件降频触发：</p>
-    <p>事件延时触发：</p>
+    <p>事件降频触发：<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a></p>
+    <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a></p>
 </doc>

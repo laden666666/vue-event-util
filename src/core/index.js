@@ -100,7 +100,6 @@ function install(Vue, options) {
         ],
     ];
 
-    // 将
     for(let i = 0; i < utilMethodArr.length; i++){
         let utilMethodName = utilMethodArr[i][0],
         utilMethod = utilMethodArr[i][1]
@@ -114,7 +113,7 @@ function install(Vue, options) {
             }
 
             eventKey = hash([eventKey, fn.toString(), time])
-            return this.$$VEUBind(utilMethodName, eventKey, utilMethod(fn, time))
+            return this.$$VEUBind(utilMethodName, eventKey, utilMethod(fn, time, options))
         }
     }
 }

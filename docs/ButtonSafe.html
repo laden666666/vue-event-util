@@ -37,17 +37,20 @@
                 <el-col :span="6"><div class="example">
                     <p>使用throttle防止连击，1秒内保护按钮只能响应一次点击事件</p>
                     <p class="text">请在1秒内连续点击下面的按钮，无论点击几次只会弹一个消息框</p>
+                    <!-- 使用$throttle确保click事件1秒内只响应一次 -->
                     <el-button type="primary" @click="$throttle(click, 1000)()">请连击我</el-button>
                 </div></el-col>
                 <el-col :span="6"><div class="example">
                         <p>循环渲染时候，如果不绑定key，所有按钮一秒内只能响应一次单击请求</p>
                         <p class="text">请在1秒内连续连击下面的按钮1、按钮2、按钮3，1秒内只会弹一次最先单击那个按钮的消息框</p>
-                        <el-button v-for="i in 3" :key="i" type="primary" @click="$throttle(click, 1000)(i)">按钮{{i}}</el-button>
+                        <!-- 未将key传入throttle -->
+                        <el-button v-for="key in 3" :key="key" type="primary" @click="$throttle(click, 1000)(key)">按钮{{key}}</el-button>
                 </div></el-col>
                 <el-col :span="6"><div class="example">
                         <p>循环渲染时候，如果绑定key，每个按钮一秒内只能响应一次，彼此互不干扰</p>
                         <p class="text">请在1秒内连续连击下面的按钮1、按钮2、按钮3，每个按钮的对话框无论点击几次只会弹一个消息框</p>
-                        <el-button v-for="i in 3" :key="i" type="primary" @click="$throttle(i, click, 1000)(i)">按钮{{i}}</el-button>
+                        <!-- 将key传入throttle -->
+                        <el-button v-for="key in 3" :key="key" type="primary" @click="$throttle(key, click, 1000)(key)">按钮{{key}}</el-button>
                 </div></el-col>
             </el-row>
         </div>
@@ -56,11 +59,6 @@
         Vue.use(vueEventUtil)
         var app = new Vue({
             el: '#app',
-            data: {
-                width: '200',
-                height: '200',
-                resizeCount: 0
-            },
             methods: {
                 click(name = ''){
                     const h = this.$createElement;
