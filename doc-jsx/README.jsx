@@ -20,7 +20,7 @@
     <browser-list Android=">=4.4" Firefox Chrome IE=">=9" iPhone Edge Safari/>
 
     <h2>插件解决的问题</h2>
-    <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数<strong>以入参传入</strong>，并以<strong>返回函数</strong>的形式返回处理后的函数。如lodash库对函数防抖的实现：</p>
+    <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数以入参传入，并以返回函数的形式返回处理后的函数。如lodash库对函数防抖的实现：</p>
     <code lang="javascript">{
 `fn = _.throttle(fn, 1000)`
     }</code>
@@ -144,124 +144,134 @@ export deflaut {
             ...
         }, 100),
     }
-}
-`}</code>
+}`}</code>
 
-<h3>控件实例函数</h3>
-<p><code>vue-event-util</code>在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，针对Vue事件绑定函数的方法不同，<code>vue-event-util</code>提供两种不同的方法：</p>
-<p>可以在方法里面使用$xxx函数里调用的方式，方法名绑定，如</p>
-<code lang="html">{
+    <h3>控件实例函数</h3>
+    <p><code>vue-event-util</code>在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，针对Vue事件绑定函数的方法不同，<code>vue-event-util</code>提供两种不同的方法：</p>
+    <p>可以在方法里面使用$xxx函数里调用的方式，方法名绑定，如</p>
+    <code lang="html">{
 `<template>
     <div class="test">
-        <button @click="$delay(counting, 1000)(count)" >delay</button>
+        <p>方法里面调用vue-event-util处理函数</P>
         <button @click="delay(count)" >delay2</button>
-        <button @click="$throttle(counting, 1000)(count)" >throttle</button>
         <button @click="throttle(count)" >throttle2</button>
-        <button @click="$debounce(counting, 1000)(count)" >debounce</button>
         <button @click="debounce(count)" >debounce2</button>
+        <p>内联处理器里调用vue-event-util处理函数</P>
+        <button @click="$delay(method, 1000)('delay')" >delay</button>
+        <button @click="$throttle(method, 1000)('throttle')" >throttle</button>
+        <button @click="$debounce(method, 1000)('debounce')" >debounce</button>
     </div>
 </template>
 <script>
 export default {
-    data () {
-        return {
-            count: 0
-        }
-    },
     methods: {
-        counting(a){
-            console.log(a)
-            this.count++
+        method(parameter){
+            console.log(parameter)
         },
-        delay(a){
-            this.$delay((a)=>{
-                this.counting(a)
-            }, 1000)(a)
+        //方法里面调用vue-event-util的delay函数
+        delay(parameter){
+            this.$delay((parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
         },
-        throttle(a){
-            this.$throttle((a)=>{
-                this.counting(a)
-            }, 1000)(a)
+        //方法里面调用vue-event-util的throttle函数
+        throttle(parameter){
+            this.$throttle((parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
         },
-        debounce(a){
-            this.$debounce((a)=>{
-                this.counting(a)
-            }, 1000)(a)
-        },
-        after(a){
-            this.$after((a)=>{
-                this.counting(a)
-            }, 5)(a)
-        },
-        before(a){
-            this.$before((a)=>{
-                this.counting(a)
-            }, 5)(a)
+        //方法里面调用vue-event-util的debounce函数
+        debounce(parameter){
+            this.$debounce((parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
         },
     },
-    components:{
-    }
 }
 </script>
-`}</code>
-
-<h3>列表渲染函数</h3>
-<p>当出现列表循环的时候，如果希望每一个循环<code>vue-event-util</code>在Vue实例的原型上提供了上述函数处理，使用原型上的方法去处理函数，处理后的结果是控件实例独享的，针对Vue事件绑定函数的方法不同，<code>vue-event-util</code>提供两种不同的方法：</p>
-<p>可以在方法里面使用$xxx函数里调用的方式，方法名绑定，如</p>
-<code lang="html">{
+    `}</code>
+    <p>可以在方法里面调用vue-event-util函数：</p>
+    <code lang="javascript">{
+`export default {
+    methods: {
+        method(parameter){
+            console.log(parameter)
+        },
+        throttle(parameter){
+            //将函数真正的处理逻传入vue-event-util的$throttle函数里，实现对函数节流的效果
+            this.$throttle((parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
+        },
+    }
+}
+</script>`}</code>
+    <p>也可以在内联处理器里调用vue-event-util处理函数：</p>
+    <code lang="html">{
 `<template>
     <div class="test">
-        <button @click="$delay(counting, 1000)(count)" >delay</button>
-        <button @click="delay(count)" >delay2</button>
-        <button @click="$throttle(counting, 1000)(count)" >throttle</button>
-        <button @click="throttle(count)" >throttle2</button>
-        <button @click="$debounce(counting, 1000)(count)" >debounce</button>
-        <button @click="debounce(count)" >debounce2</button>
+        <button @click="$throttle(method, 1000)('throttle')" >throttle</button>
     </div>
 </template>
 <script>
 export default {
-    data () {
-        return {
-            count: 0
-        }
-    },
     methods: {
-        counting(a){
-            console.log(a)
-            this.count++
-        },
-        delay(a){
-            this.$delay((a)=>{
-                this.counting(a)
-            }, 1000)(a)
-        },
-        throttle(a){
-            this.$throttle((a)=>{
-                this.counting(a)
-            }, 1000)(a)
-        },
-        debounce(a){
-            this.$debounce((a)=>{
-                this.counting(a)
-            }, 1000)(a)
-        },
-        after(a){
-            this.$after((a)=>{
-                this.counting(a)
-            }, 5)(a)
-        },
-        before(a){
-            this.$before((a)=>{
-                this.counting(a)
-            }, 5)(a)
+        method(parameter){
+            console.log(parameter)
         },
     },
-    components:{
-    }
 }
 </script>
-`}</code>
+    `}</code>
 
+    <h3>列表渲染函数</h3>
+    <p>当出现列表循环的时候，如果希望每一个循环出的元素拥有自己的事件处理函数，可以给每个元素提供一个key，使得各个元素绑定的事件互不干扰，例：</p>
+    <code lang="html">{
+`<template>
+    <div class="test">
+        <p>方法里面调用vue-event-util处理函数</P>
+        <button v-for="key in 5" :key="key" @click="delay(key, count)" >delay2</button>
+        <button v-for="key in 5" :key="key" @click="throttle(key, count)" >throttle2</button>
+        <button v-for="key in 5" :key="key" @click="debounce(key, count)" >debounce2</button>
+        <p>内联处理器里调用vue-event-util处理函数</P>
+        <button v-for="key in 5" :key="key" @click="$delay(key, method, 1000)('delay')" >delay</button>
+        <button v-for="key in 5" :key="key" @click="$throttle(key, method, 1000)('throttle')" >throttle</button>
+        <button v-for="key in 5" :key="key" @click="$debounce(key, method, 1000)('debounce')" >debounce</button>
+    </div>
+</template>
+<script>
+export default {
+    methods: {
+        method(parameter){
+            console.log(parameter)
+        },
+        //方法里面调用vue-event-util的delay函数
+        delay(key, parameter){
+            this.$delay(key, (parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
+        },
+        //方法里面调用vue-event-util的throttle函数
+        throttle(key, parameter){
+            this.$throttle(key, (parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
+        },
+        //方法里面调用vue-event-util的debounce函数
+        debounce(key, parameter){
+            this.$debounce(key, (parameter)=>{
+                this.method(parameter)
+            }, 1000)(parameter)
+        },
+    },
+}
+</script>`}</code>
+    <h2>原理</h2>
+    <p><code>vue-event-util</code>是如何存储处理后的函数的呢？</p>
+    <p><code>vue-event-util</code>将每一个需要处理的函数toString，然后和其他参数（key，wait，option）一起做一个hash，最后用这个hash值做key将处理后的函数缓存起来。这是一个享元模式，如果hash已经存在就从缓存里面取，如果不存在就对函数进行处理，再缓存。因为如果一个函数的key、wait、option都相同，那这个函数的hash值也相同，所以就可以缓存这个函数了。</p>
 
+    <h2>例子</h2>
+    <p>防止按钮连击：</p>
+    <p>事件降频触发：</p>
+    <p>事件延时触发：</p>
 </doc>
