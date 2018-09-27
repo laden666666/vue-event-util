@@ -32,7 +32,7 @@
                 <el-col :span="6"><div class="example">
                     <p>每次点击都会弹出一个按钮</p>
                     <p class="text">请在1秒内连续点击下面的按钮，点击几次会弹几个消息框</p>
-                    <el-button type="primary" @click="click">请连击我</el-button>
+                    <el-button type="primary" @click="click()">请连击我</el-button>
                 </div></el-col>
                 <el-col :span="6"><div class="example">
                     <p>使用throttle防止连击，1秒内保护按钮只能响应一次点击事件</p>

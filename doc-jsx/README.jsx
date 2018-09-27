@@ -3,7 +3,7 @@
 
     <npm-info version downloads license name="vue-event-util"></npm-info>
 
-    <p><code>vue-event-util</code>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong>等扩展功能。<code>vue-event-util</code>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code>vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p>
+    <p><code>vue-event-util</code>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong> 等扩展功能。<code>vue-event-util</code>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code>vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p>
 
     <h2>源码</h2>
     <p><a href="https://github.com/laden666666/vue-event-util">github</a>，<a href="https://gitee.com/laden666666/vue-event-util">码云</a></p>
@@ -96,7 +96,6 @@ Vue.use(vueEventUtil)`
     }</code>
 
     <h2>使用</h2>
-    <p>具体的使用方法可以参考<a>xxx</a>，这里仅是简单介绍一下<code>vue-event-util</code>常用使用方式</p>
     <p><code>vue-event-util</code>提供了lodash的<strong>delay</strong>、<strong>throttle</strong>、<strong>debounce</strong>等方法</p>
 
     <li>delay: 延迟 wait 毫秒后调用 func</li>

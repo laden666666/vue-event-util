@@ -5,7 +5,7 @@
             <a href="https://www.npmjs.com/package/vue-event-util"><img src="https://img.shields.io/npm/l/vue-event-util.svg" alt="License"></a>
         </p>
 
-`vue-event-util`，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流（throttle）**、**函数防抖（debounce）**、**函数延时（delay）**等扩展功能。`vue-event-util`将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用`vue-event-util`提供的便携方法将其应用到Vue的事件中。
+`vue-event-util`，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如**函数节流（throttle）**、**函数防抖（debounce）**、**函数延时（delay）** 等扩展功能。`vue-event-util`将[lodash](https://lodash.com/ "") 的很多处理函数的工具函数加入到插件中，大家可用使用`vue-event-util`提供的便携方法将其应用到Vue的事件中。
 
 
 ## 源码
@@ -131,9 +131,6 @@ Vue.use(vueEventUtil)
 
 
 ## 使用
-
-具体的使用方法可以参考[xxx]( "") ，这里仅是简单介绍一下`vue-event-util`常用使用方式
-
 
 `vue-event-util`提供了lodash的**delay**、**throttle**、**debounce**等方法
 
