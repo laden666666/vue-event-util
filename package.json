@@ -1,7 +1,7 @@
 {
   "name": "vue-event-util",
   "version": "0.0.1",
-  "description": "The util of Vue event",
+  "description": "The util of Vue event. Provides extended functions such as throttling, debounce, delay.",
   "author": "laden666666",
   "main": "dist/vue-event-util.js",
   "scripts": {
