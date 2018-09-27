@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content="all" />
+    <meta name="author" content="laden666666" />
+    <meta name="description" content="The util of Vue event">
+    <title>the document of vue-event-util</title>
+    <style>
+        html, body{
+            padding: 0;
+            margin: 0;
+            background-color: #eee;
+        }
+        .mydoc{
+            margin: 0 auto;
+            max-width: 1000px;
+            box-sizing: border-box;
+            padding: 0 20px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <dic class="doc">
+
+    </dic>
+    <script>
+        var xhr = new XMLHttpRequest()
+        xhr.open('GET', './README.html')
+        xhr.send()
+        xhr.onload = function(){
+            if(xhr.readyState == 4 && xhr.status >= 200 && xhr.status < 300){
+                document.querySelector('.doc').innerHTML = this.response
+            }
+        }
+    </script>
+</body>
+</html>

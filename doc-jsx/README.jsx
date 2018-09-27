@@ -79,9 +79,20 @@
     <code lang="javascript">{
     `npm install vue-event-util`
     }</code>
+    <p>然后在js中执行</p>
+    <code lang="javascript">{
+`import vueEventUtil from 'vue-event-util'
+import Vue from 'vue'
+
+Vue.use(vueEventUtil)`
+    }</code>
+
     <p>在浏览器环境中，直接将<strong>vue-event-util.js</strong>文件引入即可。</p>
     <code lang="html">{
-    `<script src="vue-event-util.js"></script>`
+`<script src="vue-event-util.js"></script>
+<script>
+    Vue.use(vueEventUtil)
+</script>`
     }</code>
 
     <h2>使用</h2>

@@ -18,7 +18,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         // 生成的打包文件名
         path: path.join(__dirname, '../dist'),
         filename: 'vue-event-util.js',
-        library: 'vueElementResizeEvent',
+        library: 'vueEventUtil',
         libraryTarget: 'umd',
     },
     module: {

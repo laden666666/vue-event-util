@@ -126,3 +126,12 @@ export default {
     throttle: _throttle,
     delay: _delay,
 }
+
+export {
+    install,
+    version,
+}
+
+export const debounce = _debounce
+export const throttle = _throttle
+export const delay = _delay
