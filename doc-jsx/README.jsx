@@ -3,21 +3,27 @@
 
     <npm-info version downloads license name="vue-event-util"></npm-info>
 
-    <p><code>vue-event-util</code>，是一个扩展Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong> 等扩展功能。<code>vue-event-util</code>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code>vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p>
+    <p><code>vue-event-util</code>，是一个Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong> 等功能。<code>vue-event-util</code>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code>vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p>
 
     <h2>源码</h2>
     <p><a href="https://github.com/laden666666/vue-event-util">github</a>，<a href="https://gitee.com/laden666666/vue-event-util">码云</a></p>
 
     <h2>功能</h2>
-    <li>对Vue的事件响应函数提供<strong>函数防抖（throttle）</strong>、<strong>函数节流（debounce）</strong>、<strong>延时执行（delay）</strong>等函数处理功能</li>
-    <li>0.对某控件<strong>所有</strong>实例共享的函数进行<span>函数防抖</span>和<span>函数节流</span></li>
-    <li>1.对某控件<strong>各个</strong>实例共享的函数进行<span>函数防抖</span>和<span>函数节流</span></li>
-    <li>2.对<strong>列表渲染的控件</strong>进行<span>函数防抖</span>和<span>函数节流</span></li>
-    <li>3.实现防止按钮连击</li>
-    <li>4.实现降低事件响应频率</li>
+    <li>0.对Vue的事件响应函数提供<strong>函数防抖（throttle）</strong>、<strong>函数节流（debounce）</strong>、<strong>延时执行（delay）</strong> 等函数处理功能</li>
+    <li>1.对某控件<strong>所有实例</strong>共享的函数进行<span>函数防抖</span>和<span>函数节流</span></li>
+    <li>2.对某控件<strong>各个实例</strong>的函数进行<span>函数防抖</span>和<span>函数节流</span></li>
+    <li>3.对<strong>列表渲染的控件绑定的函数</strong>进行<span>函数防抖</span>和<span>函数节流</span></li>
+    <li>4.实现防止按钮连击</li>
+    <li>5.实现降低事件响应频率</li>
+    <li>6.实现延时事件响应</li>
 
     <h2>兼容性</h2>
     <browser-list Android=">=4.4" Firefox Chrome IE=">=9" iPhone Edge Safari/>
+
+    <h2>例子</h2>
+    <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a></p>
+    <p>事件降频触发：<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a></p>
+    <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a></p>
 
     <h2>插件解决的问题</h2>
     <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数以入参传入，并以返回函数的形式返回处理后的函数。如lodash库对函数防抖的实现：</p>
@@ -26,13 +32,13 @@
     }</code>
 
     <p>但是这个处理对于Vue的template语法中的事件响应函数来说，实现起来很麻烦，我们以做<strong>函数防抖</strong>为例，看看我们以往在Vue中是如何实现上述操作的。Vue的事件绑定有两种方法：<a href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">方法名绑定</a>和<a href="https://cn.vuejs.org/v2/guide/events.html#%E5%86%85%E8%81%94%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">内联处理器</a>。
-    <strong>内联处理器</strong>允许我们提供一个表达式处理事件，因为Vue会生成一个匿名函数去执行绑定的表达式，每一次事件处理时候都会执行一次这个匿名函数，因此无法实现如<strong>函数节流</strong>、<strong>函数防抖</strong>这样的功能。</p>
+    <strong>内联处理器</strong>允许我们提供一个表达式处理事件，但表达式没有<strong>记忆功能</strong>，因此无法实现如<strong>函数节流</strong>、<strong>函数防抖</strong>这样的功能。</p>
     <code lang="html">{
 `<template>
     <button @clikc="_.throttle(fn, 1000)()">函数节流</button>
 </template>`
     }</code>
-    <p>因为每一次点击都会执行一次_.throttle方法，所以上述代码是无法实现对事件的函数节流处理的。</p>
+    <p>每一次点击都会执行一次_.throttle方法，所以上述代码是无法实现对事件的函数节流处理的。</p>
 
     <p>另一种方法是先将函数进行处理，再通过方法名绑定或者内联处理器的方式绑定到Vue上面。</p>
     <code lang="html">{
@@ -49,7 +55,7 @@
     }
 </script>`
     }</code>
-    <p>这样写也存在一个问题，就是所有控件公用一个节流函数，当多个控件需要单独做函数节流的话就没有办法了。而且在列表渲染，如果列表的每一个控件都要单独做函数节流处理，这样就更麻烦了。</p>
+    <p>这样写也存在一个问题，就是所有控件公用一个节流函数，当多个控件需要单独做函数节流的话就没有办法了。而且对于列表渲染，如果列表的每一个控件都要单独做函数节流处理，这样就更麻烦了。</p>
     <p>有时候我们甚至会借助watch来实现函数节流的功能。如：</p>
 <code lang="html">{
 `<template>
@@ -277,11 +283,7 @@ export default {
 }
 </script>`}</code>
     <h2>原理</h2>
-    <p><code>vue-event-util</code>是如何存储处理后的函数的呢？</p>
-    <p><code>vue-event-util</code>将每一个需要处理的函数toString，然后和其他参数（key，wait，option）一起做一个hash，最后用这个hash值做key将处理后的函数缓存起来。这是一个享元模式，如果hash已经存在就从缓存里面取，如果不存在就对函数进行处理，再缓存。因为如果一个函数的key、wait、option都相同，那这个函数的hash值也相同，所以就可以缓存这个函数了。</p>
+    <p><code>vue-event-util</code>是如何存对Vue绑定的函数实现<strong>记忆</strong>呢？</p>
+    <p>将每一个需要处理的函数toString，然后和其他参数（key，wait，option）一起做一个hash，最后用这个hash值做key将处理后的函数缓存起来。这是一个享元模式，如果hash已经存在就从缓存里面取，如果不存在就对函数进行处理，再缓存。因为如果一个函数的key、wait、option都相同，那这个函数的hash值也相同，所以就可以缓存这个函数了。</p>
 
-    <h2>例子</h2>
-    <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a></p>
-    <p>事件降频触发：<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a></p>
-    <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a></p>
-</doc>
+   </doc>
