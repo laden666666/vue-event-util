@@ -47,7 +47,7 @@
 事件降频触发：[docs/FrequencyReduction.html](https://laden666666.github.io/vue-event-util/FrequencyReduction.html "") [源码](./docs/FrequencyReduction.html "") 
 
 
-事件延时触发：[docs/Delay.html[源码](./docs/Delay.html "") ](https://laden666666.github.io/vue-event-util/Delay.html "") 
+事件延时触发：[docs/Delay.html](https://laden666666.github.io/vue-event-util/Delay.html "") [源码](./docs/Delay.html "") 
 
 
 
