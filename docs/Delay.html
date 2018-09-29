@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="./vue-event-util.js"></script>
@@ -29,13 +31,13 @@
 
     <div id="app">
             <el-row>
-                <el-col :span="12"><div class="example">
+                <el-col :xs="24" :md="12"><div class="example">
                     <p>未做延时处理</p>
                     <p class="text">点击按钮，会立刻弹出一个消息框</p>
                     {{time}}
                     <el-button type="primary" @click="click(time)">点击我</el-button>
                 </div></el-col>
-                <el-col :span="12"><div class="example">
+                <el-col :xs="24" :md="12"><div class="example">
                     <p>做了延时处理</p>
                     <p class="text">点击按钮后，会在1秒后才会弹出一个消息框</p>
                     {{time}}

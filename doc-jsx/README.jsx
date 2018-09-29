@@ -21,9 +21,9 @@
     <browser-list Android=">=4.4" Firefox Chrome IE=">=9" iPhone Edge Safari/>
 
     <h2>例子</h2>
-    <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a></p>
-    <p>事件降频触发：<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a></p>
-    <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a></p>
+    <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a><a href="./docs/ButtonSafe.html">源码</a></p>
+    <p>事件降频触发：<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a><a href="./docs/FrequencyReduction.html">源码</a></p>
+    <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html<a href="./docs/Delay.html">源码</a></a></p>
 
     <h2>插件解决的问题</h2>
     <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数以入参传入，并以返回函数的形式返回处理后的函数。如lodash库对函数防抖的实现：</p>
