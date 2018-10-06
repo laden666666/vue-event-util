@@ -3,19 +3,19 @@
 
     <npm-info version downloads license name="vue-event-util"></npm-info>
 
-    <p><code>vue-event-util</code>, an extension to the Vue event that provides such as <strong>function throttle</strong>, <strong>function debounce</strong>, <strong>function delay </strong>. <code>vue-event-util</code> adds the tool functions of many of the <a href="https://lodash.com/">lodash</a> handlers to the plugin. You can use <code The portable method provided by >vue-event-util</code> applies it to Vue events. </p>
+    <p><code>vue-event-util</code>，是一个Vue事件的扩展插件，为Vue的事件提供了如<strong>函数节流（throttle）</strong>、<strong>函数防抖（debounce）</strong>、<strong>函数延时（delay）</strong> 等功能。<code>vue-event-util</code>将<a href="https://lodash.com/">lodash</a>的很多处理函数的工具函数加入到插件中，大家可用使用<code>vue-event-util</code>提供的便携方法将其应用到Vue的事件中。</p>
 
-    <h2>Source</h2>
+    <h2>源码</h2>
     <p><a href="https://github.com/laden666666/vue-event-util">github</a>，<a href="https://gitee.com/laden666666/vue-event-util">码云</a></p>
 
-    <h2>Features</h2>
-    <li>0. Provides <strong>function throttle</strong>, <strong>function debounce</strong>, <strong>function delay </strong> for Vue's event response function </li>
-    <li>1. <span> function anti-shake</span> and <span> function throttling</span> for a shared function of a control <strong>all instances</strong></li>
-    <li>2. <span> function anti-shake</span> and <span> function throttling</span> for a function of a control <strong>each instance</strong></li>
-    <li>3.<strong>List-wrapped control-bound functions</strong><span>function anti-shake</span> and <span> function throttling</span></li>
-    <li>4. Implement anti-button combo</li>
-    <li>5. Reduce the frequency of incident response</li>
-    <li>6. Implementing a delayed event response</li>
+    <h2>功能</h2>
+    <li>0.对Vue的事件响应函数提供<strong>函数防抖（throttle）</strong>、<strong>函数节流（debounce）</strong>、<strong>延时执行（delay）</strong> 等函数处理功能</li>
+    <li>1.对某控件<strong>所有实例</strong>共享的函数进行<span>函数防抖</span>和<span>函数节流</span></li>
+    <li>2.对某控件<strong>各个实例</strong>的函数进行<span>函数防抖</span>和<span>函数节流</span></li>
+    <li>3.对<strong>列表渲染的控件绑定的函数</strong>进行<span>函数防抖</span>和<span>函数节流</span></li>
+    <li>4.实现防止按钮连击</li>
+    <li>5.实现降低事件响应频率</li>
+    <li>6.实现延时事件响应</li>
 
     <h2>兼容性</h2>
     <browser-list Android=">=4.4" Firefox Chrome IE=">=9" iPhone Edge Safari/>
