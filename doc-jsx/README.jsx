@@ -12,38 +12,37 @@
     <li>0. Provides <strong>function throttle</strong>, <strong>function debounce</strong>, <strong>function delay </strong> for Vue's event response function </li>
     <li>1. <span> function anti-shake</span> and <span> function throttling</span> for a shared function of a control <strong>all instances</strong></li>
     <li>2. <span> function anti-shake</span> and <span> function throttling</span> for a function of a control <strong>each instance</strong></li>
-    <li>3.<strong>List-wrapped control-bound functions</strong><span>function anti-shake</span> and <span> function throttling</span></li>
+    <li>3. <strong>List-wrapped control-bound functions</strong><span>function anti-shake</span> and <span> function throttling</span></li>
     <li>4. Implement anti-button combo</li>
     <li>5. Reduce the frequency of incident response</li>
     <li>6. Implementing a delayed event response</li>
 
-    <h2>兼容性</h2>
+    <h2>Compatibility</h2>
     <browser-list Android=">=4.4" Firefox Chrome IE=">=9" iPhone Edge Safari/>
 
-    <h2>例子</h2>
-    <p>防止按钮连击：<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a><a href="./docs/ButtonSafe.html">源码</a></p>
-    <p>事件降频触发：<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a><a href="./docs/FrequencyReduction.html">源码</a></p>
-    <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a><a href="./docs/Delay.html">源码</a></p>
+    <h2>Example</h2>
+    <p>Prevent the button from clicking continuously for a short time:<a href="https://laden666666.github.io/vue-event-util/ButtonSafe.html">docs/ButtonSafe.html</a><a href="./docs/ButtonSafe.html">View source</a></p>
+    <p>Reduce the event trigger frequency:<a href="https://laden666666.github.io/vue-event-util/FrequencyReduction.html">docs/FrequencyReduction.html</a><a href="./docs/FrequencyReduction.html">View source</a></p>
+    <p>Delayed execution of events:<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a><a href="./docs/Delay.html">View source</a></p>
 
-    <h2>插件解决的问题</h2>
-    <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数以入参传入，并以返回函数的形式返回处理后的函数。如lodash库对函数防抖的实现：</p>
+    <h2>Solved problem</h2>
+    <p>When we perform <strong>Currying</strong>, <strong>function throttling</strong>, and <strong>function throttle</strong> on functions, we often need to input the original function and return a processed function. Such as the lodash library for the implementation of throttle:</p>
     <code lang="javascript">{
 `fn = _.throttle(fn, 1000)`
     }</code>
 
-    <p>但是这个处理对于Vue的template语法中的事件响应函数来说，实现起来很麻烦，我们以做<strong>函数防抖</strong>为例，看看我们以往在Vue中是如何实现上述操作的。Vue的事件绑定有两种方法：<a href="https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95">方法名绑定</a>和<a href="https://cn.vuejs.org/v2/guide/events.html#%E5%86%85%E8%81%94%E5%A4%84%E7%90%86%E5%99%A8%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95">内联处理器</a>。
-    <strong>内联处理器</strong>允许我们提供一个表达式处理事件，但表达式没有<strong>记忆功能</strong>，因此无法实现如<strong>函数节流</strong>、<strong>函数防抖</strong>这样的功能。</p>
+    <p>The above processing is not available in Vue's event handler because Vue's event handler does not provide a cached function：</p>
     <code lang="html">{
 `<template>
-    <button @clikc="_.throttle(fn, 1000)()">函数节流</button>
+    <button @clikc="_.throttle(fn, 1000)()">throttle</button>
 </template>`
     }</code>
-    <p>每一次点击都会执行一次_.throttle方法，所以上述代码是无法实现对事件的函数节流处理的。</p>
+    <p>Each time the button is clicked, the _.throttle method is executed once, so the above code is unable to implement the function throttling of the event.</p>
 
-    <p>另一种方法是先将函数进行处理，再通过方法名绑定或者内联处理器的方式绑定到Vue上面。</p>
+    <p>Another way is to first process the function and bind it to Vue through method name binding or inline processor.</p>
     <code lang="html">{
 `<template>
-    <button @clikc="fn">函数节流</button>
+    <button @clikc="fn">throttle</button>
 </template>
 <script>
     export deflaut {
@@ -55,37 +54,15 @@
     }
 </script>`
     }</code>
-    <p>这样写也存在一个问题，就是所有控件公用一个节流函数，当多个控件需要单独做函数节流的话就没有办法了。而且对于列表渲染，如果列表的每一个控件都要单独做函数节流处理，这样就更麻烦了。</p>
-    <p>有时候我们甚至会借助watch来实现函数节流的功能。如：</p>
-<code lang="html">{
-`<template>
-    <button @clikc="fn">函数节流</button>
-</template>
-<script>
-    export deflaut {
-        created() {
-            this.$watch('clickTime', _.throttle(() => {
-                ...
-            }, 200))
-        }
-        data: {
-            clickTime: 0,
-        }
-        methods: {
-            fn: function(){
-                this.clickTime++
-            }
-        },
-    }
-</script>`
-}</code>
-    <p>方法是死的人是活的，我们肯定能找到更优雅的方式来做函数节流或者其他类似的事情。<code>vue-event-util</code>就是为了解决这个事情而生的。</p>
+    <p>There is also a problem with this type of writing, that is, all controls share a throttling function. When multiple controls need to do function throttling separately, there is no way. And for list rendering, if each control of the list has to do function throttling separately, it is even more troublesome.</p>
 
-    <h2>安装</h2>
+    <p><code> VUE-Event util</code> was born to solve this problem.</p>
+
+    <h2>Installation</h2>
     <code lang="javascript">{
     `npm install vue-event-util`
     }</code>
-    <p>然后在js中执行</p>
+    <p>Then execute in js</p>
     <code lang="javascript">{
 `import vueEventUtil from 'vue-event-util'
 import Vue from 'vue'
@@ -93,7 +70,7 @@ import Vue from 'vue'
 Vue.use(vueEventUtil)`
     }</code>
 
-    <p>在浏览器环境中，直接将<strong>vue-event-util.js</strong>文件引入即可。</p>
+    <p>In the browser, just import the <strong>vue-event-util.js</strong> file.</p>
     <code lang="html">{
 `<script src="vue-event-util.js"></script>
 <script>
@@ -101,8 +78,8 @@ Vue.use(vueEventUtil)`
 </script>`
     }</code>
 
-    <h2>使用</h2>
-    <p><code>vue-event-util</code>提供了lodash的<strong>delay</strong>、<strong>throttle</strong>、<strong>debounce</strong>等方法</p>
+    <h2>Usage</h2>
+    <p><code>vue-event-util</code> provides lodash's <strong>delay</strong>, <strong>throttle</strong>, <strong>debounce</strong> and more.</p>
 
     <li>delay: 延迟 wait 毫秒后调用 func</li>
     <li>debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。</li>

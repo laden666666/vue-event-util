@@ -26,7 +26,7 @@
     <p>事件延时触发：<a href="https://laden666666.github.io/vue-event-util/Delay.html">docs/Delay.html</a><a href="./docs/Delay.html">源码</a></p>
 
     <h2>插件解决的问题</h2>
-    <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数以入参传入，并以返回函数的形式返回处理后的函数。如lodash库对函数防抖的实现：</p>
+    <p>当我们对函数进行<strong>柯里化</strong>、<strong>函数节流</strong>、<strong>函数防抖</strong>处理的时候，往往需要将原有函数以入参传入，并以处理后的函数返回。如lodash库对函数防抖的实现：</p>
     <code lang="javascript">{
 `fn = _.throttle(fn, 1000)`
     }</code>
