@@ -81,10 +81,10 @@ Vue.use(vueEventUtil)`
     <h2>Usage</h2>
     <p><code>vue-event-util</code> provides lodash's <strong>delay</strong>, <strong>throttle</strong>, <strong>debounce</strong> and more.</p>
 
-    <li>delay: 延迟 wait 毫秒后调用 func</li>
-    <li>debounce: 创建一个 debounced（防抖动）函数，该函数会从上一次被调用后，延迟 wait 毫秒后调用 func 方法。</li>
-    <li>throttle: 创建一个节流函数，在 wait 秒内最多执行 func 一次的函数</li>
-    <p>三种函数具体用法可以参考<a href="https://lodash.com/docs">lodash</a>。</p>
+    <li>delay: Invokes func after wait milliseconds. Any additional arguments are provided to func when it's invoked.</li>
+    <li>debounce:Creates a debounced function that delays invoking func until after wait milliseconds have elapsed since the last time the debounced function was invoked.</li>
+    <li>throttle: Creates a throttled function that only invokes func at most once per every wait milliseconds.</li>
+    <p>For the specific usage of the three functions, please refer to <a href="https://lodash.com/docs">lodash</a>.</p>
 
     <h4>delay</h4>
     <api>{`
@@ -106,21 +106,21 @@ Vue.use(vueEventUtil)`
     `}</api>
     <h4>throttle</h4>
     <api>{`
-    * 创建一个节流函数，在 wait 秒内最多执行 callback 一次的函数
-    * @param {Function} callback    需要做节流函数
-    * @param {number} wait       节流时间，单位毫秒
-    * @param {object} options               选项对象
-    * @param {boolean} options.leading      指定调用在节流开始前，默认true
-    * @param {boolean} options.trailing     指定调用在节流结束后，默认false（与lodash默认配置不同，主要是因为事件处理更常用trailing为false的情况，如防止按钮连击）
-    * @return {Function}           处理后的函数
+    * Creates a throttled function that only invokes func at most once per every wait milliseconds.
+    * @param {Function} callback            The function to throttle.
+    * @param {number} wait                  The number of milliseconds to throttle invocations to.
+    * @param {object} options               The options object.
+    * @param {boolean} options.leading      Specify invoking on the leading edge of the timeout.
+    * @param {boolean} options.trailing     Specify invoking on the trailing edge of the timeout.(This is different from the default configuration of lodash, mainly because event handling is more often used when the trailing is false)
+    * @return {Function}                    Returns the new throttled function.
     `}</api>
 
-    <p>这些方法可以通过3种方式对Vue控件的函数进行处理：</p>
-    <li>1.全局函数</li>
-    <li>2.控件实例函数</li>
-    <li>3.列表渲染函数</li>
+    <p>These methods can handle the functions of Vue's controls in three ways:</p>
+    <li>1.Global methods</li>
+    <li>2.Vue control instance methods</li>
+    <li>3.List rendered DOM bound functions</li>
 
-    <h3>全局函数</h3>
+    <h3>Global methods</h3>
     <p><code>vue-event-util</code>提供某控件<strong>所有</strong>实例共享的函数进行上述函数处理，这种使用方法，相当于作用于控件原型上的函数，一旦方法进行了处理后，控件的每一个实例会共享处理后的方法。通过<code>vue-event-util</code>上提供的这些全局处理方法，具体用法如下：</p>
 
     <code lang="javascript">{
